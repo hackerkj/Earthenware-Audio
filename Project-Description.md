@@ -1,6 +1,8 @@
 # Earthenware Audio
 ## Team Members
 Klayton Hacker - hackerkj@mail.uc.edu
+JP Wang - wang3jp@mail.uc.edu
+Joe Welage - 
 ## Project Idea
 I am interested in developing audio processing software. 
 I would like to develop VST Plugins for musical audio software application. 
