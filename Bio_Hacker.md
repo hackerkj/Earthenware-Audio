@@ -26,5 +26,6 @@ University of Cincinnati
 - MATLAB
 - Solid	Edge (3D drafting)
 - Agile	Project	Management 
+
 # Potential Project
 My name is Klayton Hacker and my major is Computer Science. I am not yet completely sure what the requirements of the senior design project are, however I am interested in developing audio processing software. I would like to develop VST Plugins for musical audio software application.  Some of the fields I hope to work in are Digital Signal Processing, GUI development, and the VST framework.  If there are any people out there that are into musical recording software let me know!
