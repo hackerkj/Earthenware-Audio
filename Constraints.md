@@ -15,3 +15,6 @@ There are multiple commercial licensing tiers for JUCE, with different terms for
 - JUCE Educational (no revenue limit) - free for bona fide educational institutes
 
 Depending on if we look to sell the product after our senior design presentation, we could in fact have legal ramifications.
+
+## Diversity and Cultural Constraints
+Music is a cultural production with a multitude of styles, arrangements and social contexts. To create an effective tool that covers the uses of all musical traditions would greatly complicate the project. Our senior design will be restricted to the Western music tradition, utilizing a 12-tone equal tempered system tuned to 432hz. This leaves out musical traditions such as those common to India which are not equal tempered, with notes and scale concepts featuring microtones. Within the 12-tone framework, this proejct will also be restricted to the most common scales such as major or minor. Less commonly used scales or modes common in traditions like Jazz may also be left out depending on the implementation. Adding support for other musical standards could be a topic for future work.
