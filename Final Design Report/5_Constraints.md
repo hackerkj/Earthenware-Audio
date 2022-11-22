@@ -1,3 +1,5 @@
+# Constriaints
+
 ## Economic Constriaint
 The use of the JUCE Framework requires using a liscensing plan provided by JUCE in relation to an organization's projected revenue for developing a plugin and
 how much customization an organization wants.These plans include personal, Indie, Pro, and Education. For the development of the Earthenware plugin 
