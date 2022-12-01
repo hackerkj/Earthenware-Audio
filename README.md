@@ -17,6 +17,6 @@
 
 ## [8 Professional Biographies](https://github.com/hackerkj/Earthenware-Audio/blob/main/FinalDesignReport\8_Professional_Biographies)
 
-## [9 Budget](https://github.com/hackerkj/Earthenware-Audio/blob/main/FinalDesignReport\9_Budget.md)
+## [9 Budget](FinalDesignReport/9_Budget.md)
 
 ## [10 Appendix](https://github.com/hackerkj/Earthenware-Audio/blob/main/FinalDesignReport\10_Appendix.md)
