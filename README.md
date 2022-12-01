@@ -15,7 +15,7 @@
 
 ## [7 Self-Assessment Essays](FinalDesignReport/7_Self_Assessment_Essays/)
 
-## [8 Professional Biographies](FinalDesignReport\8_Professional_Biographies/)
+## [8 Professional Biographies](FinalDesignReport/8_Professional_Biographies/)
 
 ## [9 Budget](FinalDesignReport/9_Budget.md)
 
