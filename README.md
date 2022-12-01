@@ -11,12 +11,12 @@
 
 ## [5 ABET Concerns Essay](\FinalDesignReport\5_Constraints.md)
 
-PPT Slideshow (includes ABET Concerns)
-Self-Assessment Essays
-Professional Biographies
-Budget
-expenses to date or statement that there have not been any.
-show monetary value of donated items and donation sources.
-Appendix
-include appropriate references, citations, links to code repositories, and meeting notes.
-there should be evidence justifying 45 hours of effort for each team member.
+## [6 PPT Slideshow](/FinalDesignReport/6_EarthenwareAudioPresentation.pptx)
+
+## [7 Self-Assessment Essays](\FinalDesignReport\7_Self_Assessment_Essays)
+
+## [8 Professional Biographies](\FinalDesignReport\8_Professional_Biographies)
+
+## [9 Budget](\FinalDesignReport\9_Budget.md)
+
+## [10 Appendix](\FinalDesignReport\10_Appendix.md)
