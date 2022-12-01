@@ -13,7 +13,7 @@
 
 ## [6 PPT Slideshow](FinalDesignReport/6_EarthenwareAudioPresentation.pptx)
 
-## [7 Self-Assessment Essays](FinalDesignReport\7_Self_Assessment_Essays/)
+## [7 Self-Assessment Essays](FinalDesignReport/7_Self_Assessment_Essays/)
 
 ## [8 Professional Biographies](FinalDesignReport\8_Professional_Biographies/)
 
