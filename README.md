@@ -1,5 +1,5 @@
 # Table of Contets for Fall Design Reports
-## [1 Team names and Project Abstract](https://github.com/hackerkj/Earthenware-Audio/blob/main/FinalDesignReport\1_Names_and_Abstract.md)
+## [1 Team names and Project Abstract](/Earthenware-Audio/FinalDesignReport/1_Names_and_Abstract.md)
 
 ## [2 Project Description](https://github.com/hackerkj/Earthenware-Audio/blob/main/FinalDesignReport/2_Project_Description.md)
 
