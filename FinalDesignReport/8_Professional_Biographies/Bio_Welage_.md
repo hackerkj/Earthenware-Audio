@@ -5,7 +5,7 @@
 **Co-op Experience**
 
 **Application Development, TQL, Cincinnnati, Ohio (2 semesters)**
-  -  Fullstack development and maintainace with three Anroid applications
+  -  Fullstack development and maintainace with three Android applications
      - Backend: .NET Backend-For-Frontend implementation
      - Frontend: Using Android libraries for UI and services for the applications
   -  Fixed bugs, defects, and production issues
