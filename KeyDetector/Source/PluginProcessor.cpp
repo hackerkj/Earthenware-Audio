@@ -58,7 +58,7 @@ bool KeyDetectorAudioProcessor::isMidiEffect() const
     return true;
    #else
     return false;
-   #endif
+   #endif                                                         
 }
 
 double KeyDetectorAudioProcessor::getTailLengthSeconds() const
@@ -97,12 +97,21 @@ void KeyDetectorAudioProcessor::prepareToPlay (double sampleRate, int samplesPer
     // initialisation that you need..
     pitchYIN.setBufferSize(samplesPerBlock);
     pitchYIN.setSampleRate(static_cast<unsigned int> (sampleRate));
+
+    inputAudio.setChannels(getTotalNumInputChannels());
+    inputAudio.setFrameRate(sampleRate);
+    //inputAudio.addToSampleCount(samplesPerBlock);
+    //keyFinder.keyOfAudio(inputAudio);
+    framesPerSecond = sampleRate / samplesPerBlock;
+    //keyAudioBuffer = new float[(framesPerSecond * samplesPerBlock)];
+
 }
 
 void KeyDetectorAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
+    //delete keyAudioBuffer;
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -157,8 +166,29 @@ void KeyDetectorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
         auto* channelData = buffer.getWritePointer(channel);
         // only grabs the first channel, mono signal
         pitch = pitchYIN.getPitchInHz(buffer.getReadPointer(0));
-        juce::String dbgpitch;
-        //DBG(std::to_string(pitch));
+
+        // TODO
+        // Find a way to add to buffer and rerun this function periodically
+        // (maybe asychonously depending on time required)
+        // Should be started, cleared and stopped via one of the buttons
+        // currently using 1 second for testing, make dynamically longer if possible
+        int sample;
+        inputAudio.addToSampleCount(buffer.getNumSamples());
+       for (int i = 0; i < buffer.getNumSamples(); ++i) {
+           sample = buffer.getNumSamples() * frames + i, buffer.getSample(0, i);
+           inputAudio.setSampleByFrame(frames, 0, sample);
+       }
+       frames += 1;
+       
+       if (inputAudio.getSampleCount() / buffer.getNumSamples() > framesPerSecond) {
+           // This part is commented out because it's currently broken
+           // fftAdapter.cpp was implemented by hand to use JUCE's FFT library
+           // because it didn't come with its own and I couldn't figure out the one
+           // the original github page used. A good next step would be testing if
+           // what we have works with test data in libKeyFinder/tests
+           //keyFinder.keyOfAudio(inputAudio);
+           frames = 0;
+       }
 
 
         // ..do something to the data...

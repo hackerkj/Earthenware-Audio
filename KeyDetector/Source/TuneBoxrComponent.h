@@ -34,7 +34,7 @@ public:
         g.drawRect(localWidth / 2 - 5, localY, ((localX + localWidth) / 100.0) * 10.0, localY + localHeight, 2.0);
         if (abs(centsSmoothed) < 50.0) {
             float inner = 5.0;
-            float outer = 20.0;
+            float outer = 50.0;
             // red's hsv is 0
             float hsvGreen = 1.0 / 3.0;
             float abs_cents = (abs(centsSmoothed));
@@ -54,7 +54,10 @@ public:
                 //DBG(std::to_string(hueRedToGreen));
                 g.setColour(Colour::fromHSV(hueRedToGreen, 1.0, 1.0, 1.0));
             }
-
+            
+            // TODO, pull the moving box into it's own class for efficiency and so only it glows
+            glow.setGlowProperties(4.0, Colour::fromRGBA(128,128,128,128));
+            setComponentEffect(&glow);
             
             g.fillRect(localWidth / 2.0 - 5 + centsSmoothed * 2.0, localY, 
                         ((localX + localWidth) / 100.0) * 5.0, localY + localHeight);
@@ -66,39 +69,35 @@ public:
     }
     void setCents(float cents)
     {
+        this->cents = cents;
+        sum = 0.0;
         // set cents as a smoothed rolling average
-        // handle some edge cases
+        // handle some edge cases (might need a fix?)
         if (cents > 50.0) {
             cents = 50.0;
         }
         if (cents < -50.0) {
             cents = -50.0;
         }
-        this->cents = (cents + circBufferSize * centsSmoothed) / (circBufferSize+1);
         // circular buffer logic
-        //this part stops the running total from going crazy
-        if (avgIndex == 0) {
-            centsSum = cents * circBufferSize;
+        centsRollingAverage[bufferIndex] = cents;
+        bufferIndex = (bufferIndex + 1) % bufferSize;
+        for (auto& n : centsRollingAverage) {
+            sum += n;
         }
-        avgIndex = (avgIndex + 1) % circBufferSize;
-        
-        centsRollingAverage[avgIndex] = cents;
-
-        centsSum += cents;
-        centsSum -= centsRollingAverage[(avgIndex + 1) % circBufferSize];
-        centsSmoothed = centsSum /circBufferSize;
+        centsSmoothed = sum / (float)bufferSize; 
         
     }
 private:
     float cents;
+    GlowEffect glow;
 
     float centsSmoothed = 0.0;
-    // using this for smoothing. Functioning as a circular buffer/queue
-    int avgIndex = 0;
-    float centsSum = 0.0;
-    // average of 20 samples, raise to smooth, lower to make more responsive
-    static const unsigned int circBufferSize = 20; 
-    float centsRollingAverage[circBufferSize];
+    // average of bufferSize samples, raise to smooth, lower to make more responsive
+    static const unsigned int bufferSize = 15; 
+    float centsRollingAverage[bufferSize];
+    float sum = 0.0;
+    unsigned int bufferIndex = 0;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(HorizontalTunerBarComponent)
 };
 

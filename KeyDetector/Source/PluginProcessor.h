@@ -10,6 +10,7 @@
 
 #include <JuceHeader.h>
 #include "PitchYIN.h"
+#include "keyfinder.h"
 
 //==============================================================================
 /**
@@ -64,5 +65,12 @@ private:
     //==============================================================================
     float pitch;
     PitchYIN pitchYIN;
+    KeyFinder::key_t key; // TODO: make this a ranked queue
+    KeyFinder::AudioData inputAudio;
+    KeyFinder::KeyFinder keyFinder;
+    int framesPerSecond; // 1 second of audio
+    int frames = 0;
+    //float* keyAudioBuffer;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KeyDetectorAudioProcessor)
 };

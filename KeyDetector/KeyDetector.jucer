@@ -5,6 +5,102 @@
               pluginFormats="buildStandalone,buildVST3">
   <MAINGROUP id="Wou3SZ" name="KeyDetector">
     <GROUP id="{5B67DC47-8619-9622-EF98-472A14FCD68D}" name="Source">
+      <GROUP id="{5C9F2DD7-B73A-E324-6651-B368301B2B4B}" name="libKeyFinder">
+        <GROUP id="{FA1403AD-60E0-A42C-E6E8-79B4DF70E96B}" name="tests">
+          <GROUP id="{39C6B329-2904-4009-8D29-F8313A25EC8C}" name="catch">
+            <FILE id="PiGeNm" name="catch.hpp" compile="0" resource="0" file="../External/libKeyFinder/tests/catch/catch.hpp"/>
+          </GROUP>
+          <FILE id="F4ZrTm" name="_testhelpers.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/_testhelpers.cpp"/>
+          <FILE id="eZlOwZ" name="_testhelpers.h" compile="0" resource="0" file="../External/libKeyFinder/tests/_testhelpers.h"/>
+          <FILE id="efnZRM" name="audiodatatest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/audiodatatest.cpp"/>
+          <FILE id="nQC2IY" name="binodetest.cpp" compile="1" resource="0" file="../External/libKeyFinder/tests/binodetest.cpp"/>
+          <FILE id="EgeZai" name="chromagramtest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/chromagramtest.cpp"/>
+          <FILE id="pWUJwM" name="chromatransformfactorytest.cpp" compile="1"
+                resource="0" file="../External/libKeyFinder/tests/chromatransformfactorytest.cpp"/>
+          <FILE id="byjUQ4" name="chromatransformtest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/chromatransformtest.cpp"/>
+          <FILE id="D5CTAu" name="CMakeLists.txt" compile="0" resource="1" file="../External/libKeyFinder/tests/CMakeLists.txt"/>
+          <FILE id="Evvvjr" name="constantstest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/constantstest.cpp"/>
+          <FILE id="hR7INP" name="downsamplershortcuttest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/downsamplershortcuttest.cpp"/>
+          <FILE id="bMLMIJ" name="fftadaptertest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/fftadaptertest.cpp"/>
+          <FILE id="qeyI7e" name="keyclassifiertest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/keyclassifiertest.cpp"/>
+          <FILE id="INKFUe" name="keyfindertest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/keyfindertest.cpp"/>
+          <FILE id="KwLF5i" name="lowpassfilterfactorytest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/lowpassfilterfactorytest.cpp"/>
+          <FILE id="v09p6n" name="lowpassfiltertest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/lowpassfiltertest.cpp"/>
+          <FILE id="KgFjUm" name="main.cpp" compile="1" resource="0" file="../External/libKeyFinder/tests/main.cpp"/>
+          <FILE id="c1V7Jb" name="spectrumanalysertest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/spectrumanalysertest.cpp"/>
+          <FILE id="jIujvh" name="temporalwindowfactorytest.cpp" compile="1"
+                resource="0" file="../External/libKeyFinder/tests/temporalwindowfactorytest.cpp"/>
+          <FILE id="Ldqz7W" name="tests.pro" compile="0" resource="1" file="../External/libKeyFinder/tests/tests.pro"/>
+          <FILE id="KMQNA8" name="toneprofilestest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/toneprofilestest.cpp"/>
+          <FILE id="ME2kFO" name="windowfunctiontest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/windowfunctiontest.cpp"/>
+          <FILE id="xlhitE" name="workspacetest.cpp" compile="1" resource="0"
+                file="../External/libKeyFinder/tests/workspacetest.cpp"/>
+        </GROUP>
+        <FILE id="MMRwcT" name="audiodata.cpp" compile="1" resource="0" file="../External/libKeyFinder/audiodata.cpp"/>
+        <FILE id="TYRI6l" name="audiodata.h" compile="0" resource="0" file="../External/libKeyFinder/audiodata.h"/>
+        <FILE id="TVGgBG" name="binode.h" compile="0" resource="0" file="../External/libKeyFinder/binode.h"/>
+        <FILE id="QcCDjM" name="chromagram.cpp" compile="1" resource="0" file="../External/libKeyFinder/chromagram.cpp"/>
+        <FILE id="OJYmEC" name="chromagram.h" compile="0" resource="0" file="../External/libKeyFinder/chromagram.h"/>
+        <FILE id="Lqm8IC" name="chromatransform.cpp" compile="1" resource="0"
+              file="../External/libKeyFinder/chromatransform.cpp"/>
+        <FILE id="cHk333" name="chromatransform.h" compile="0" resource="0"
+              file="../External/libKeyFinder/chromatransform.h"/>
+        <FILE id="Clw9U3" name="chromatransformfactory.cpp" compile="1" resource="0"
+              file="../External/libKeyFinder/chromatransformfactory.cpp"/>
+        <FILE id="DBUkxN" name="chromatransformfactory.h" compile="0" resource="0"
+              file="../External/libKeyFinder/chromatransformfactory.h"/>
+        <FILE id="ran6YV" name="CMakeLists.txt" compile="0" resource="1" file="../External/libKeyFinder/CMakeLists.txt"/>
+        <FILE id="D036j3" name="constants.cpp" compile="1" resource="0" file="../External/libKeyFinder/constants.cpp"/>
+        <FILE id="M6azaH" name="constants.h" compile="0" resource="0" file="../External/libKeyFinder/constants.h"/>
+        <FILE id="uULUX8" name="exception.h" compile="0" resource="0" file="../External/libKeyFinder/exception.h"/>
+        <FILE id="sCSq88" name="fftadapter.cpp" compile="1" resource="0" file="../External/libKeyFinder/fftadapter.cpp"/>
+        <FILE id="oHAbnR" name="fftadapter.h" compile="0" resource="0" file="../External/libKeyFinder/fftadapter.h"/>
+        <FILE id="EvQeaY" name="keyclassifier.cpp" compile="1" resource="0"
+              file="../External/libKeyFinder/keyclassifier.cpp"/>
+        <FILE id="MgnFjQ" name="keyclassifier.h" compile="0" resource="0" file="../External/libKeyFinder/keyclassifier.h"/>
+        <FILE id="uuWFIw" name="keyfinder.cpp" compile="1" resource="0" file="../External/libKeyFinder/keyfinder.cpp"/>
+        <FILE id="htUOk7" name="keyfinder.h" compile="0" resource="0" file="../External/libKeyFinder/keyfinder.h"/>
+        <FILE id="CbVkvd" name="lowpassfilter.cpp" compile="1" resource="0"
+              file="../External/libKeyFinder/lowpassfilter.cpp"/>
+        <FILE id="B5Uykf" name="lowpassfilter.h" compile="0" resource="0" file="../External/libKeyFinder/lowpassfilter.h"/>
+        <FILE id="Hdxmcn" name="lowpassfilterfactory.cpp" compile="1" resource="0"
+              file="../External/libKeyFinder/lowpassfilterfactory.cpp"/>
+        <FILE id="SahSO1" name="lowpassfilterfactory.h" compile="0" resource="0"
+              file="../External/libKeyFinder/lowpassfilterfactory.h"/>
+        <FILE id="sWlyFj" name="spectrumanalyser.cpp" compile="1" resource="0"
+              file="../External/libKeyFinder/spectrumanalyser.cpp"/>
+        <FILE id="s7CRoH" name="spectrumanalyser.h" compile="0" resource="0"
+              file="../External/libKeyFinder/spectrumanalyser.h"/>
+        <FILE id="ZVMBsX" name="temporalwindowfactory.cpp" compile="1" resource="0"
+              file="../External/libKeyFinder/temporalwindowfactory.cpp"/>
+        <FILE id="EOjrxJ" name="temporalwindowfactory.h" compile="0" resource="0"
+              file="../External/libKeyFinder/temporalwindowfactory.h"/>
+        <FILE id="Xs7Znr" name="toneprofiles.cpp" compile="1" resource="0"
+              file="../External/libKeyFinder/toneprofiles.cpp"/>
+        <FILE id="wP6drL" name="toneprofiles.h" compile="0" resource="0" file="../External/libKeyFinder/toneprofiles.h"/>
+        <FILE id="ARsSxv" name="windowfunctions.cpp" compile="1" resource="0"
+              file="../External/libKeyFinder/windowfunctions.cpp"/>
+        <FILE id="yAFpcj" name="windowfunctions.h" compile="0" resource="0"
+              file="../External/libKeyFinder/windowfunctions.h"/>
+        <FILE id="TG2H4F" name="workspace.cpp" compile="1" resource="0" file="../External/libKeyFinder/workspace.cpp"/>
+        <FILE id="TjJupu" name="workspace.h" compile="0" resource="0" file="../External/libKeyFinder/workspace.h"/>
+      </GROUP>
+      <FILE id="AFts3g" name="TuneBoxrComponent.h" compile="0" resource="0"
+            file="Source/TuneBoxrComponent.h"/>
       <FILE id="nnwA1F" name="PitchYIN.h" compile="0" resource="0" file="Source/PitchYIN.h"/>
       <FILE id="YpqxgV" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
@@ -14,15 +110,13 @@
             file="Source/PluginEditor.cpp"/>
       <FILE id="JPORLn" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
-    <FILE id="YiaKRh" name="TunerComponent.h" compile="0" resource="0"
-          file="Source/TunerComponent.h"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
     <VS2022 targetFolder="Builds/VisualStudio2022">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="KeyDetector"/>
-        <CONFIGURATION isDebug="0" name="Release" targetName="KeyDetector"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="KeyDetector" headerPath="C:\Users\jpdub\source\repos\hackerkj\Earthenware-Audio\External\libKeyFinder"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="KeyDetector" headerPath="C:\Users\jpdub\source\repos\hackerkj\Earthenware-Audio\External\libKeyFinder"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
@@ -37,6 +131,7 @@
         <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../JUCE/modules"/>
       </MODULEPATHS>
     </VS2022>
   </EXPORTFORMATS>
@@ -50,6 +145,7 @@
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

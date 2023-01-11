@@ -30,7 +30,7 @@ public:
     void setSampleRate(unsigned int newSampleRate)
     {
         sampleRate = newSampleRate;
-        DBG("sampleRate: " + String(sampleRate));
+        
     }
 
     void setBufferSize(unsigned int bufferSize)
