@@ -8,6 +8,7 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "tests/_testhelpers.h"
 
 //==============================================================================
 KeyDetectorAudioProcessor::KeyDetectorAudioProcessor()
@@ -105,6 +106,7 @@ void KeyDetectorAudioProcessor::prepareToPlay (double sampleRate, int samplesPer
     framesPerSecond = sampleRate / samplesPerBlock;
     //keyAudioBuffer = new float[(framesPerSecond * samplesPerBlock)];
 
+
 }
 
 void KeyDetectorAudioProcessor::releaseResources()
@@ -186,7 +188,8 @@ void KeyDetectorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
            // because it didn't come with its own and I couldn't figure out the one
            // the original github page used. A good next step would be testing if
            // what we have works with test data in libKeyFinder/tests
-           //keyFinder.keyOfAudio(inputAudio);
+           int key = keyFinder.keyOfAudio(inputAudio);
+           DBG(std::to_string(key));
            frames = 0;
        }
 

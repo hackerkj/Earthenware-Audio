@@ -40,10 +40,11 @@ namespace KeyFinder {
   };
 
   FftAdapter::FftAdapter(unsigned int inFrameSize) : priv(new FftAdapterPrivate) {
-	  frameSize = (int)log2((double)inFrameSize) + 1;
-	  priv->input = (std::complex<float>*)malloc(sizeof(std::complex<float>) * frameSize);
-	  priv->output = (std::complex<float>*)malloc(sizeof(std::complex<float>) * frameSize);
-	  memset(priv->output, 0, sizeof(std::complex<float>) * frameSize);
+	  // inFrameSize can be arbitrary, but the JUCE fft operates on 2^n
+	  frameSize = (int)log2((double)inFrameSize + 1);
+	  priv->input = (std::complex<float>*)malloc(sizeof(std::complex<float>) * (1 << frameSize));
+	  priv->output = (std::complex<float>*)malloc(sizeof(std::complex<float>) * (1 << frameSize));
+	  memset(priv->output, 0, sizeof(std::complex<float>) * (1 << frameSize));
 	  fftwPlanMutex.lock();
 	  priv->plan = new juce::dsp::FFT(static_cast<int> (frameSize));
 	  fftwPlanMutex.unlock();
@@ -61,42 +62,45 @@ namespace KeyFinder {
   }
 
   void FftAdapter::setInput(unsigned int i, double real) {
-	  if (i >= frameSize) {
+	  if (i >= (1 << frameSize)) {
 		  std::ostringstream ss;
-		  ss << "Cannot set out-of-bounds sample (" << i << "/" << frameSize << ")";
+		  ss << "Cannot set out-of-bounds sample (" << i << "/" << (1 << frameSize) << ")";
 		  throw Exception(ss.str().c_str());
 	  }
 	  if (!std::isfinite(real)) {
 		  throw Exception("Cannot set sample to NaN");
 	  }
-	  priv->input[2 * i] = real;
-	  priv->input[2 * i + 1] = 0;
 
+	// array-oriented access: https://en.cppreference.com/w/cpp/numeric/complex
+	//  apparently the below access method was wrong and overwrote both, so much for reading the docs
+	  //priv->input[2 * i] = static_cast<float>( real);
+	  priv->input[i].real(real);
+	  priv->input[i].imag(0.0);
   }
 
   double FftAdapter::getOutputReal(unsigned int i) const {
-	  if (i >= frameSize) {
+	  if (i >= (1 << frameSize)) {
 		  std::ostringstream ss;
-		  ss << "Cannot get out-of-bounds sample (" << i << "/" << frameSize << ")";
+		  ss << "Cannot get out-of-bounds sample (" << i << "/" << (1 << frameSize) << ")";
 		  throw Exception(ss.str().c_str());
 	  }
-	  return reinterpret_cast<double*> (priv->output)[2 * i];
+	  return (double) priv->input->real();
 
   }
 
   double FftAdapter::getOutputImaginary(unsigned int i) const {
-	  if (i >= frameSize) {
+	  if (i >= (1 << frameSize)) {
 		  std::ostringstream ss;
-		  ss << "Cannot get out-of-bounds sample (" << i << "/" << frameSize << ")";
+		  ss << "Cannot get out-of-bounds sample (" << i << "/" << (1 << frameSize) << ")";
 		  throw Exception(ss.str().c_str());
 	  }
-	  return reinterpret_cast<double*> (priv->output)[2 * i + 1];
+	  return  (double)priv->input->imag();
   }
 
   double FftAdapter::getOutputMagnitude(unsigned int i) const {
-	  if (i >= frameSize) {
+	  if (i >= (1 << frameSize)) {
 		  std::ostringstream ss;
-		  ss << "Cannot get out-of-bounds sample (" << i << "/" << frameSize << ")";
+		  ss << "Cannot get out-of-bounds sample (" << i << "/" << (1 << frameSize) << ")";
 		  throw Exception(ss.str().c_str());
 	  }
 	  return sqrt(pow(getOutputReal(i), 2) + pow(getOutputImaginary(i), 2));
@@ -148,8 +152,8 @@ namespace KeyFinder {
 	  if (!std::isfinite(real)) {
 		  throw Exception("Cannot set sample to NaN");
 	  }
-	  priv->input[2 * i] = real;
-	  priv->input[2 * i + 1] = imag;
+	  priv->input[i].real(real);
+	  priv->input[i].imag(imag);
   }
 
   double InverseFftAdapter::getOutput(unsigned int i) const {
@@ -158,7 +162,7 @@ namespace KeyFinder {
 		  ss << "Cannot get out-of-bounds sample (" << i << "/" << (1 << frameSize) << ")";
 		  throw Exception(ss.str().c_str());
 	  }
-	  return reinterpret_cast<double*> (priv->output)[2 * i];
+	  return (double)priv->input->real();
 
   }
 
