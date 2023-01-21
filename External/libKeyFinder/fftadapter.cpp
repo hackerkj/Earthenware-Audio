@@ -42,8 +42,10 @@ namespace KeyFinder {
   FftAdapter::FftAdapter(unsigned int inFrameSize) : priv(new FftAdapterPrivate) {
 	  // inFrameSize can be arbitrary, but the JUCE fft operates on 2^n
 	  frameSize = (int)log2((double)inFrameSize + 1);
-	  priv->input = (std::complex<float>*)malloc(sizeof(std::complex<float>) * (1 << frameSize));
-	  priv->output = (std::complex<float>*)malloc(sizeof(std::complex<float>) * (1 << frameSize));
+	  //priv->input = (std::complex<float>*)malloc(sizeof(std::complex<float>) * (1 << frameSize));
+	  //priv->output = (std::complex<float>*)malloc(sizeof(std::complex<float>) * (1 << frameSize));
+	  priv->input = new std::complex<float>[(1 << frameSize)];
+	  priv->output = new std::complex<float>[(1 << frameSize)];
 	  memset(priv->output, 0, sizeof(std::complex<float>) * (1 << frameSize));
 	  fftwPlanMutex.lock();
 	  priv->plan = new juce::dsp::FFT(static_cast<int> (frameSize));
@@ -123,8 +125,10 @@ namespace KeyFinder {
 
   InverseFftAdapter::InverseFftAdapter(unsigned int inFrameSize) : priv(new FftAdapterPrivate) {
 	  frameSize = (int)log2((double)inFrameSize) + 1;
-	  priv->input = (std::complex<float>*)malloc(sizeof(std::complex<float>) * (1 << frameSize));
-	  priv->output = (std::complex<float>*)malloc(sizeof(std::complex<float>) * (1 << frameSize));
+	  //priv->input = (std::complex<float>*)malloc(sizeof(std::complex<float>) * (1 << frameSize));
+	  //priv->output = (std::complex<float>*)malloc(sizeof(std::complex<float>) * (1 << frameSize));
+	  priv->input = new std::complex<float>[(1 << frameSize)];
+	  priv->output = new std::complex<float>[(1 << frameSize)];
 	  memset(priv->output, 0, sizeof(std::complex<float>) * (1 << frameSize));
 	  fftwPlanMutex.lock();
 	  priv->plan = new juce::dsp::FFT(static_cast<int> ((1 << frameSize)));

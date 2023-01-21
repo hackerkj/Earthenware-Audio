@@ -31,6 +31,7 @@
 // implementation specific
 #include "fftadapter.h"
 #include "windowfunctions.h"
+#include <JuceHeader.h>
 
 namespace KeyFinder {
 
@@ -165,15 +166,22 @@ namespace KeyFinder {
       bufferTemp = bufferFront;
       std::vector<double>::const_iterator coefficientIterator = coefficients.begin();
       while (coefficientIterator < coefficients.end()) {
-        sum += *coefficientIterator * *bufferTemp;
-        std::advance(coefficientIterator, 1);
-        std::advance(bufferTemp, 1);
-        if (bufferTemp == buffer->end()) {
-          bufferTemp = buffer->begin();
-        }
+          sum += *coefficientIterator * *bufferTemp;
+          std::advance(coefficientIterator, 1);
+          std::advance(bufferTemp, 1);
+          if (bufferTemp == buffer->end()) {
+              bufferTemp = buffer->begin();
+          }
       }
-      audio.setSampleAtWriteIterator(sum);
-      audio.advanceWriteIterator(shortcutFactor);
+
+      // TODO, get to the root of this issue!?
+      // JP's bug fix, not part of the original code, this originally did not do any bounds checking
+      // no idea why it's not working so it may be a sign that something else is broken, or giving wrong output
+      if (audio.readIteratorWithinUpperBound()) {
+          audio.setSampleAtWriteIterator(sum);
+          audio.advanceWriteIterator(shortcutFactor);
+      }
+
     }
   }
 
