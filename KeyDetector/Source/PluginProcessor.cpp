@@ -20,7 +20,7 @@ KeyDetectorAudioProcessor::KeyDetectorAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       ), pitchYIN(44100,1024) // TODO: investigate why lower notes don't tune well.
+                       ), pitchYIN(44100,1024) // we should accept more than just 1024
 #endif
 {
 }
@@ -98,54 +98,16 @@ void KeyDetectorAudioProcessor::prepareToPlay (double sampleRate, int samplesPer
     // initialisation that you need..
     pitchYIN.setBufferSize(samplesPerBlock);
     pitchYIN.setSampleRate(static_cast<unsigned int> (sampleRate));
-
-    inputAudio.setChannels(getTotalNumInputChannels());
-    inputAudio.setFrameRate(sampleRate);
-    //inputAudio.addToSampleCount(samplesPerBlock);
-    //keyFinder.keyOfAudio(inputAudio);
-    framesPerSecond = sampleRate / samplesPerBlock;
-    //keyAudioBuffer = new float[(framesPerSecond * samplesPerBlock)];
-
-
-
-     // Code for rebugging and testing, taken from tests folder
-    unsigned int sr = 44100;
-    KeyFinder::AudioData inputAudio;
-    inputAudio.setFrameRate(sr);
+    //DBG(getTotalNumInputChannels());
     inputAudio.setChannels(1);
-    inputAudio.addToSampleCount(sr);
-    for (unsigned int i = 0; i < sr; i++) {
-        float sample = 0.0;
-        sample += sine_wave(i, 340.0000, sr, 1);
-        sample += sine_wave(i, 523.2511, sr, 1);
-        sample += sine_wave(i, 659.2551, sr, 1);
-        inputAudio.setSample(i, sample);
-    }   
-    KeyFinder::AudioData offset;
-    offset.setFrameRate(sr);
-    offset.setChannels(1);
-    offset.addToSampleCount(4);
-
-    KeyFinder::KeyFinder k;
-    KeyFinder::Workspace w;
-    KeyFinder::FftAdapter* testFftPointer = NULL;
-
-    k.progressiveChromagram(offset, w);
-    for (unsigned int i = 0; i < 10; i++) {
-        k.progressiveChromagram(inputAudio, w);
-        
-    }
-    //Broken, displays 5 for all values instead of 1
-    DBG(std::to_string(KeyFinder::A_MINOR));
-    DBG(std::to_string(k.keyOfChromagram(w))); 
-    // Code for debugging and testing
+    inputAudio.setFrameRate(sampleRate);
+    blocksPerSecond = sampleRate / samplesPerBlock;
 }
 
 void KeyDetectorAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
-    //delete keyAudioBuffer;
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -195,43 +157,50 @@ void KeyDetectorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     // the samples and the outer loop is handling the channels.
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    {
-        auto* channelData = buffer.getWritePointer(channel);
-        // only grabs the first channel, mono signal
-        // TODO
-        // Make some sort of noise gate function so this only runs
-        // when we're reasonable sure somethign is played, and a '-'
-        // is displayed otherwise
-        pitch = pitchYIN.getPitchInHz(buffer.getReadPointer(0));
-
-        // TODO
-        // Find a way to add to buffer and rerun this function periodically
-        // (maybe asychonously depending on time required)
-        // Should be started, cleared and stopped via one of the buttons
-        // currently using 1 second for testing, make dynamically longer if possible
-        int sample;
-        inputAudio.addToSampleCount(buffer.getNumSamples());
-       for (int i = 0; i < buffer.getNumSamples(); ++i) {
-           sample = buffer.getNumSamples() * frames + i, buffer.getSample(0, i);
-           inputAudio.setSampleByFrame(frames, 0, sample);
-       }
-       frames += 1;
-       
-       if (inputAudio.getSampleCount() / buffer.getNumSamples() > framesPerSecond) {
-           // This part is commented out because it's currently broken
-           // fftAdapter.cpp was implemented by hand to use JUCE's FFT library
-           // because it didn't come with its own and I couldn't figure out the one
-           // the original github page used. A good next step would be testing if
-           // what we have works with test data in libKeyFinder/tests
-           //int key = keyFinder.keyOfAudio(inputAudio);
-           //DBG(std::to_string(key));
-           frames = 0;
-       }
 
 
-        // ..do something to the data...
+    auto* channelData = buffer.getReadPointer(0);
+    // only grabs the first channel, mono signal
+    // TODO
+    // Make some sort of noise gate function so this only runs
+    // when we're reasonably sure something is played, and a '-'
+    // is displayed when that threshold isnt met
+    // TODO: investigate why lower notes don't tune well, more buffer size?
+    // we only accept 1024 at the moment
+    pitch = pitchYIN.getPitchInHz(channelData);
+
+    inputAudio.addToSampleCount(buffer.getNumSamples());
+
+    for (int sample = 0; sample < buffer.getNumSamples(); ++sample) {
+        inputAudio.setSample(sample, channelData[sample]);
+        //DBG(channelData[sample]);
     }
+    blocks++;
+     
+    // run once per second
+    if (blocks % blocksPerSecond == 0) {
+        // TODO
+        // When uncommented, this provides the correct output for the first
+        // couple times this function is run. After that we get silence (0.0f)
+        // from channelData[sample]. I think it's because it takes too long
+        // to run, causing a buffer underrun. Find a way to make this run in
+        // a way that is asynchronous or non-blocking. Even blocking for 1ms
+        // resulted in bad reads after a while
+
+        //Thread::sleep(1);
+        //int key = keyFinder.keyOfAudio(inputAudio);
+        //DBG(std::to_string(key));
+
+    }
+
+    // don't record more than 5 seconds
+    if (blocks > blocksPerSecond * 5) {
+        // pretty sure this drops the samples least recently receieved
+        // might need to check that, the memory doesn't leak at least
+        inputAudio.discardFramesFromFront(buffer.getNumSamples() * blocks);
+        blocks = 0;
+    }
+     //..do something to the data...
 }
 
 //==============================================================================

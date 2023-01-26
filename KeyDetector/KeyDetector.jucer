@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="naWwtt" name="KeyDetector" projectType="audioplug" useAppConfig="0"
+              displaySplashScreen="1" jucerFormatVersion="1" addUsingNamespaceToJuceHeader="1"
+              pluginFormats="buildStandalone,buildVST3">
+  <MAINGROUP id="Wou3SZ" name="KeyDetector">
+    <GROUP id="{5B67DC47-8619-9622-EF98-472A14FCD68D}" name="Source">
+      <GROUP id="{105ED9C3-F0E6-BC3F-6EDC-2A03F356EAAD}" name="libKeyFinder">
+        <GROUP id="{4F605EDC-F8C6-6527-3776-EEB58C3328FE}" name="tests">
+          <GROUP id="{A6FAD119-4A6D-35D0-E51B-452E00028FF1}" name="catch">
+            <FILE id="eg0M2Z" name="catch.hpp" compile="0" resource="0" file="Source/libKeyFinder/tests/catch/catch.hpp"/>
+          </GROUP>
+          <FILE id="SwnywN" name="_testhelpers.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/_testhelpers.cpp"/>
+          <FILE id="BMKvaa" name="_testhelpers.h" compile="0" resource="0" file="Source/libKeyFinder/tests/_testhelpers.h"/>
+          <FILE id="zYJxMD" name="audiodatatest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/audiodatatest.cpp"/>
+          <FILE id="BoVXYd" name="binodetest.cpp" compile="1" resource="0" file="Source/libKeyFinder/tests/binodetest.cpp"/>
+          <FILE id="Z0j3X2" name="chromagramtest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/chromagramtest.cpp"/>
+          <FILE id="rACQvJ" name="chromatransformfactorytest.cpp" compile="1"
+                resource="0" file="Source/libKeyFinder/tests/chromatransformfactorytest.cpp"/>
+          <FILE id="Usq5GY" name="chromatransformtest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/chromatransformtest.cpp"/>
+          <FILE id="Sp8g8B" name="CMakeLists.txt" compile="0" resource="1" file="Source/libKeyFinder/tests/CMakeLists.txt"/>
+          <FILE id="vizYjM" name="constantstest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/constantstest.cpp"/>
+          <FILE id="OGTsfH" name="downsamplershortcuttest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/downsamplershortcuttest.cpp"/>
+          <FILE id="rtnFYT" name="fftadaptertest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/fftadaptertest.cpp"/>
+          <FILE id="Y4NmNQ" name="keyclassifiertest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/keyclassifiertest.cpp"/>
+          <FILE id="VDoQYh" name="keyfindertest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/keyfindertest.cpp"/>
+          <FILE id="JUYoEH" name="lowpassfilterfactorytest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/lowpassfilterfactorytest.cpp"/>
+          <FILE id="sXmRQ2" name="lowpassfiltertest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/lowpassfiltertest.cpp"/>
+          <FILE id="nU8gO4" name="main.cpp" compile="1" resource="0" file="Source/libKeyFinder/tests/main.cpp"/>
+          <FILE id="Z5e4a7" name="spectrumanalysertest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/spectrumanalysertest.cpp"/>
+          <FILE id="aJ9CE0" name="temporalwindowfactorytest.cpp" compile="1"
+                resource="0" file="Source/libKeyFinder/tests/temporalwindowfactorytest.cpp"/>
+          <FILE id="aahARx" name="tests.pro" compile="0" resource="1" file="Source/libKeyFinder/tests/tests.pro"/>
+          <FILE id="XZpwtj" name="toneprofilestest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/toneprofilestest.cpp"/>
+          <FILE id="qE72aI" name="windowfunctiontest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/windowfunctiontest.cpp"/>
+          <FILE id="dURyeS" name="workspacetest.cpp" compile="1" resource="0"
+                file="Source/libKeyFinder/tests/workspacetest.cpp"/>
+        </GROUP>
+        <FILE id="ewyzCX" name="audiodata.cpp" compile="1" resource="0" file="Source/libKeyFinder/audiodata.cpp"/>
+        <FILE id="coFArs" name="audiodata.h" compile="0" resource="0" file="Source/libKeyFinder/audiodata.h"/>
+        <FILE id="Hkpsr6" name="binode.h" compile="0" resource="0" file="Source/libKeyFinder/binode.h"/>
+        <FILE id="kSnKp7" name="chromagram.cpp" compile="1" resource="0" file="Source/libKeyFinder/chromagram.cpp"/>
+        <FILE id="JVHl06" name="chromagram.h" compile="0" resource="0" file="Source/libKeyFinder/chromagram.h"/>
+        <FILE id="Y0ymyJ" name="chromatransform.cpp" compile="1" resource="0"
+              file="Source/libKeyFinder/chromatransform.cpp"/>
+        <FILE id="aj0WCJ" name="chromatransform.h" compile="0" resource="0"
+              file="Source/libKeyFinder/chromatransform.h"/>
+        <FILE id="NNLwYX" name="chromatransformfactory.cpp" compile="1" resource="0"
+              file="Source/libKeyFinder/chromatransformfactory.cpp"/>
+        <FILE id="cCFDnM" name="chromatransformfactory.h" compile="0" resource="0"
+              file="Source/libKeyFinder/chromatransformfactory.h"/>
+        <FILE id="dk0MlI" name="CMakeLists.txt" compile="0" resource="1" file="Source/libKeyFinder/CMakeLists.txt"/>
+        <FILE id="v0Pd3r" name="constants.cpp" compile="1" resource="0" file="Source/libKeyFinder/constants.cpp"/>
+        <FILE id="Q3ZY43" name="constants.h" compile="0" resource="0" file="Source/libKeyFinder/constants.h"/>
+        <FILE id="veFU1l" name="exception.h" compile="0" resource="0" file="Source/libKeyFinder/exception.h"/>
+        <FILE id="KCds1J" name="fftadapter.cpp" compile="1" resource="0" file="Source/libKeyFinder/fftadapter.cpp"/>
+        <FILE id="nMDIIe" name="fftadapter.h" compile="0" resource="0" file="Source/libKeyFinder/fftadapter.h"/>
+        <FILE id="Lk9RCV" name="keyclassifier.cpp" compile="1" resource="0"
+              file="Source/libKeyFinder/keyclassifier.cpp"/>
+        <FILE id="FRYU3e" name="keyclassifier.h" compile="0" resource="0" file="Source/libKeyFinder/keyclassifier.h"/>
+        <FILE id="d4LBp8" name="keyfinder.cpp" compile="1" resource="0" file="Source/libKeyFinder/keyfinder.cpp"/>
+        <FILE id="S7dVuL" name="keyfinder.h" compile="0" resource="0" file="Source/libKeyFinder/keyfinder.h"/>
+        <FILE id="pocpZQ" name="lowpassfilter.cpp" compile="1" resource="0"
+              file="Source/libKeyFinder/lowpassfilter.cpp"/>
+        <FILE id="wG6VMF" name="lowpassfilter.h" compile="0" resource="0" file="Source/libKeyFinder/lowpassfilter.h"/>
+        <FILE id="OILD1J" name="lowpassfilterfactory.cpp" compile="1" resource="0"
+              file="Source/libKeyFinder/lowpassfilterfactory.cpp"/>
+        <FILE id="VIuAoX" name="lowpassfilterfactory.h" compile="0" resource="0"
+              file="Source/libKeyFinder/lowpassfilterfactory.h"/>
+        <FILE id="iAAUns" name="spectrumanalyser.cpp" compile="1" resource="0"
+              file="Source/libKeyFinder/spectrumanalyser.cpp"/>
+        <FILE id="IjS0an" name="spectrumanalyser.h" compile="0" resource="0"
+              file="Source/libKeyFinder/spectrumanalyser.h"/>
+        <FILE id="fC7IkR" name="temporalwindowfactory.cpp" compile="1" resource="0"
+              file="Source/libKeyFinder/temporalwindowfactory.cpp"/>
+        <FILE id="UxhrVT" name="temporalwindowfactory.h" compile="0" resource="0"
+              file="Source/libKeyFinder/temporalwindowfactory.h"/>
+        <FILE id="WkT5yH" name="toneprofiles.cpp" compile="1" resource="0"
+              file="Source/libKeyFinder/toneprofiles.cpp"/>
+        <FILE id="KNqk4L" name="toneprofiles.h" compile="0" resource="0" file="Source/libKeyFinder/toneprofiles.h"/>
+        <FILE id="vI4ix0" name="windowfunctions.cpp" compile="1" resource="0"
+              file="Source/libKeyFinder/windowfunctions.cpp"/>
+        <FILE id="DnFZqD" name="windowfunctions.h" compile="0" resource="0"
+              file="Source/libKeyFinder/windowfunctions.h"/>
+        <FILE id="I7geyJ" name="workspace.cpp" compile="1" resource="0" file="Source/libKeyFinder/workspace.cpp"/>
+        <FILE id="cMSsGm" name="workspace.h" compile="0" resource="0" file="Source/libKeyFinder/workspace.h"/>
+      </GROUP>
+      <GROUP id="{399B5430-4371-FE67-1788-D4A7FD362212}" name="fftw">
+        <FILE id="VIvUcr" name="bench.exe" compile="0" resource="1" file="Source/fftw/bench.exe"/>
+        <FILE id="IHAAX5" name="benchf.exe" compile="0" resource="1" file="Source/fftw/benchf.exe"/>
+        <FILE id="WN5LoR" name="benchl.exe" compile="0" resource="1" file="Source/fftw/benchl.exe"/>
+        <FILE id="zitbzU" name="COPYING" compile="0" resource="1" file="Source/fftw/COPYING"/>
+        <FILE id="Uy7FCx" name="COPYRIGHT" compile="0" resource="1" file="Source/fftw/COPYRIGHT"/>
+        <FILE id="pwDQy2" name="fftw-wisdom.exe" compile="0" resource="1" file="Source/fftw/fftw-wisdom.exe"/>
+        <FILE id="QDFlN4" name="fftw3.f" compile="0" resource="1" file="Source/fftw/fftw3.f"/>
+        <FILE id="N9OhjC" name="fftw3.f03" compile="0" resource="1" file="Source/fftw/fftw3.f03"/>
+        <FILE id="i6J5TX" name="fftw3.h" compile="0" resource="0" file="Source/fftw/fftw3.h"/>
+        <FILE id="aSZ5fF" name="fftw3l.f03" compile="0" resource="1" file="Source/fftw/fftw3l.f03"/>
+        <FILE id="Ta36Wa" name="fftw3q.f03" compile="0" resource="1" file="Source/fftw/fftw3q.f03"/>
+        <FILE id="OAlhS4" name="fftwf-wisdom.exe" compile="0" resource="1"
+              file="Source/fftw/fftwf-wisdom.exe"/>
+        <FILE id="uTPAWu" name="fftwl-wisdom.exe" compile="0" resource="1"
+              file="Source/fftw/fftwl-wisdom.exe"/>
+        <FILE id="HNcPEH" name="libfftw3-3.def" compile="0" resource="1" file="Source/fftw/libfftw3-3.def"/>
+        <FILE id="vvVLT0" name="libfftw3-3.dll" compile="0" resource="1" file="Source/fftw/libfftw3-3.dll"/>
+        <FILE id="ET5mbP" name="libfftw3-3.exp" compile="0" resource="1" file="Source/fftw/libfftw3-3.exp"/>
+        <FILE id="w9qSX9" name="libfftw3-3.lib" compile="0" resource="1" file="Source/fftw/libfftw3-3.lib"/>
+        <FILE id="kjVu13" name="libfftw3f-3.def" compile="0" resource="1" file="Source/fftw/libfftw3f-3.def"/>
+        <FILE id="qMz4Tx" name="libfftw3f-3.dll" compile="0" resource="1" file="Source/fftw/libfftw3f-3.dll"/>
+        <FILE id="qOHDWl" name="libfftw3f-3.exp" compile="0" resource="1" file="Source/fftw/libfftw3f-3.exp"/>
+        <FILE id="gsCfd5" name="libfftw3f-3.lib" compile="0" resource="1" file="Source/fftw/libfftw3f-3.lib"/>
+        <FILE id="UTPjXA" name="libfftw3l-3.def" compile="0" resource="1" file="Source/fftw/libfftw3l-3.def"/>
+        <FILE id="KQWJxa" name="libfftw3l-3.dll" compile="0" resource="1" file="Source/fftw/libfftw3l-3.dll"/>
+        <FILE id="WMJXfG" name="libfftw3l-3.exp" compile="0" resource="1" file="Source/fftw/libfftw3l-3.exp"/>
+        <FILE id="ZjucG8" name="libfftw3l-3.lib" compile="0" resource="1" file="Source/fftw/libfftw3l-3.lib"/>
+        <FILE id="sqDwCf" name="NEWS" compile="0" resource="1" file="Source/fftw/NEWS"/>
+        <FILE id="lBANPu" name="README" compile="0" resource="1" file="Source/fftw/README"/>
+        <FILE id="ZCHjuL" name="README-bench" compile="0" resource="1" file="Source/fftw/README-bench"/>
+        <FILE id="czavlN" name="README-WINDOWS" compile="0" resource="1" file="Source/fftw/README-WINDOWS"/>
+      </GROUP>
+      <FILE id="AFts3g" name="TuneBoxrComponent.h" compile="0" resource="0"
+            file="Source/TuneBoxrComponent.h"/>
+      <FILE id="nnwA1F" name="PitchYIN.h" compile="0" resource="0" file="Source/PitchYIN.h"/>
+      <FILE id="YpqxgV" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="WHVYZ9" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="D3wtVl" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="JPORLn" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"
+               JUCE_DSP_USE_STATIC_FFTW="0"/>
+  <EXPORTFORMATS>
+    <VS2022 targetFolder="Builds/VisualStudio2022" externalLibraries="libfftw3-3.lib">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="KeyDetector" headerPath="../../Source/libKeyFinder&#10;../../Source/fftw"
+                       libraryPath="../../Source/fftw"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="KeyDetector" headerPath="../../Source/libKeyFinder&#10;../../Source/fftw"
+                       libraryPath="../../Source/fftw"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2022>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+</JUCERPROJECT>
