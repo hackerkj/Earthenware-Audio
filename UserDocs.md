@@ -1,11 +1,20 @@
-**1. Key Dector**
+## Key Dector
 
-**2. Background**
+## Background
 
-**3. Running Key Dector** 
+## Running Key Dector
+Key Dector can either be ran from the already compiled vst3 plugin or built manually.
 
-**4. Understanding the Plugin**
+### Building
+To build `Key Dector` run CMake on `CMakeLists.txt` within the `Key Dector` directory.
 
-**5. Making Adjustments**
+## Understanding the Plugin
 
-**6. External Links and Sources**
+### Making Adjustments
+
+## External Links and Sources
+[FFTW](http://www.fftw.org)
+
+[JUCE Framework](https://juce.com/)
+
+[libkeyfinder](https://github.com/mixxxdj/libkeyfinder)
