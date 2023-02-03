@@ -6,7 +6,7 @@
 Key Detector can either be ran from the already compiled vst3 plugin or built manually.
 
 ### Building
-To build `Key Dector` run CMake on `CMakeLists.txt` within the `Key Dector` directory.
+To build `Key Detector` run CMake on `CMakeLists.txt` within the `Key Dector` directory.
 
 ## Understanding the Plugin
 
