@@ -42,7 +42,7 @@ public:
     void difference(AudioSampleBuffer& input)
     {
         float tmp;
-        float* yinData = yin.getWritePointer(0);
+        yin.getWritePointer(0);
         const float* inputData = input.getReadPointer(0);
 
         FloatVectorOperations::fill(yinData, 0.0, yin.getNumSamples());
@@ -60,7 +60,7 @@ public:
     /** cumulative mean normalized difference function */
     void cumulativeMean()
     {
-        float* yinData = yin.getWritePointer(0);
+        yinData = yin.getWritePointer(0);
         float tmp = 0.;
         yinData[0] = 1.;
         //AUBIO_DBG("%f\t",yinData[0]);
@@ -76,7 +76,7 @@ public:
     int getPitch()
     {
         int tau = 0;
-        float* yinData = yin.getWritePointer(0);
+        yinData = yin.getWritePointer(0);
         do {
             if (yinData[tau] < 0.1)
             {
@@ -99,7 +99,7 @@ public:
     {
         int period;
         float delta = 0.0, runningSum = 0.0;
-        float* yinData = yin.getWritePointer(0);
+        yinData = yin.getWritePointer(0);
         //deltaWasNegative = false;
 
         //DBG ("calculatePitch");
@@ -127,7 +127,7 @@ public:
             if (tau > 4 && (yinData[period] < tolerence) &&
                 (yinData[period] < yinData[period + 1]))
             {
-                DBG("return early");
+                //DBG("return early");
                 return quadraticPeakPosition(yin.getReadPointer(0), period);
             }
         }
@@ -163,7 +163,7 @@ public:
 
 private:
     AudioSampleBuffer yin; //, buf;
-    //float* yinData;
+    float* yinData;
     unsigned int bufferSize;
     float tolerence; //, confidence;
     unsigned int sampleRate;

@@ -181,7 +181,7 @@ namespace KeyFinder {
           audio.advanceWriteIterator(shortcutFactor);
       }
       else {
-          DBG("lowpassfilter.cpp: out of bounds");
+          //DBG("lowpassfilter.cpp: out of bounds");
       }
 
     }

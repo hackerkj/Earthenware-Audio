@@ -8,19 +8,22 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "tests/_testhelpers.h"
 
 //==============================================================================
 KeyDetectorAudioProcessor::KeyDetectorAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
-     : AudioProcessor (BusesProperties()
-                     #if ! JucePlugin_IsMidiEffect
-                      #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
-                      #endif
-                       .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
-                     #endif
-                       ), pitchYIN(44100,1024) // we should accept more than just 1024
+    : AudioProcessor(BusesProperties()
+#if ! JucePlugin_IsMidiEffect
+#if ! JucePlugin_IsSynth
+        .withInput("Input", juce::AudioChannelSet::stereo(), true)
+#endif
+        .withOutput("Output", juce::AudioChannelSet::stereo(), true)
+#endif
+    ), pitchYIN(44100, 2048)
+    , yinBuffer(2, 4096)
+    , yinData(2, 2048)
+    , keyDetectorManager(44100)
+
 #endif
 {
 }
@@ -96,12 +99,14 @@ void KeyDetectorAudioProcessor::prepareToPlay (double sampleRate, int samplesPer
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
-    pitchYIN.setBufferSize(samplesPerBlock);
+
+
     pitchYIN.setSampleRate(static_cast<unsigned int> (sampleRate));
-    //DBG(getTotalNumInputChannels());
-    inputAudio.setChannels(1);
-    inputAudio.setFrameRate(sampleRate);
-    blocksPerSecond = sampleRate / samplesPerBlock;
+    pitchYIN.setBufferSize(2048);
+    yinData.clear();
+    yinBuffer.clear();
+
+    DBG("playing");
 }
 
 void KeyDetectorAudioProcessor::releaseResources()
@@ -142,6 +147,7 @@ void KeyDetectorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
 
+
     // In case we have more outputs than inputs, this code clears any output
     // channels that didn't contain input data, (because these aren't
     // guaranteed to be empty - they may contain garbage).
@@ -160,46 +166,28 @@ void KeyDetectorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
 
 
     auto* channelData = buffer.getReadPointer(0);
+
     // only grabs the first channel, mono signal
     // TODO
     // Make some sort of noise gate function so this only runs
     // when we're reasonably sure something is played, and a '-'
-    // is displayed when that threshold isnt met
-    // TODO: investigate why lower notes don't tune well, more buffer size?
-    // we only accept 1024 at the moment
-    pitch = pitchYIN.getPitchInHz(channelData);
-
-    inputAudio.addToSampleCount(buffer.getNumSamples());
-
-    for (int sample = 0; sample < buffer.getNumSamples(); ++sample) {
-        inputAudio.setSample(sample, channelData[sample]);
-        //DBG(channelData[sample]);
+    // is displayed when that threshold isnt met.
+    // Maybe just set a negative frequency and handle accordingly
+    // The noise floor on my maachine seems to be around 10 ^-5
+    auto start = std::chrono::high_resolution_clock::now();
+    yinBuffer.addToFifo(buffer, buffer.getNumSamples());
+    if (yinBuffer.getNumReady() >= 2048) {
+        pitch = pitchYIN.getPitchInHz(yinData.getReadPointer(0));
+        yinBuffer.readFromFifo(yinData, 2048);
+        yinBuffer.clear();
     }
-    blocks++;
-     
-    // run once per second
-    if (blocks % blocksPerSecond == 0) {
-        // TODO
-        // When uncommented, this provides the correct output for the first
-        // couple times this function is run. After that we get silence (0.0f)
-        // from channelData[sample]. I think it's because it takes too long
-        // to run, causing a buffer underrun. Find a way to make this run in
-        // a way that is asynchronous or non-blocking. Even blocking for 1ms
-        // resulted in bad reads after a while
+    
+    keyDetectorManager.pushBlock(buffer, buffer.getNumSamples());
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    //if (duration.count() != 0) DBG(duration.count());
+    //DBG(buffer.getReadPointer(0)[0]);
 
-        //Thread::sleep(1);
-        //int key = keyFinder.keyOfAudio(inputAudio);
-        //DBG(std::to_string(key));
-
-    }
-
-    // don't record more than 5 seconds
-    if (blocks > blocksPerSecond * 5) {
-        // pretty sure this drops the samples least recently receieved
-        // might need to check that, the memory doesn't leak at least
-        inputAudio.discardFramesFromFront(buffer.getNumSamples() * blocks);
-        blocks = 0;
-    }
      //..do something to the data...
 }
 

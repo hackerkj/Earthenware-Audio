@@ -5,6 +5,43 @@
               pluginFormats="buildStandalone,buildVST3">
   <MAINGROUP id="Wou3SZ" name="KeyDetector">
     <GROUP id="{5B67DC47-8619-9622-EF98-472A14FCD68D}" name="Source">
+      <FILE id="x5yg9T" name="KeyDetectorManager.h" compile="0" resource="0"
+            file="Source/KeyDetectorManager.h"/>
+      <FILE id="FrOMuw" name="AudioBufferFIFO.h" compile="0" resource="0"
+            file="Source/AudioBufferFIFO.h"/>
+      <GROUP id="{399B5430-4371-FE67-1788-D4A7FD362212}" name="fftw">
+        <FILE id="t43pGY" name="bench.exe" compile="0" resource="1" file="Source/fftw/bench.exe"/>
+        <FILE id="xasGj8" name="benchf.exe" compile="0" resource="1" file="Source/fftw/benchf.exe"/>
+        <FILE id="qfk1kT" name="benchl.exe" compile="0" resource="1" file="Source/fftw/benchl.exe"/>
+        <FILE id="i73CY6" name="COPYING" compile="0" resource="1" file="Source/fftw/COPYING"/>
+        <FILE id="jZyirz" name="COPYRIGHT" compile="0" resource="1" file="Source/fftw/COPYRIGHT"/>
+        <FILE id="MUBbCx" name="fftw-wisdom.exe" compile="0" resource="1" file="Source/fftw/fftw-wisdom.exe"/>
+        <FILE id="blNMJn" name="fftw3.f" compile="0" resource="1" file="Source/fftw/fftw3.f"/>
+        <FILE id="abVs90" name="fftw3.f03" compile="0" resource="1" file="Source/fftw/fftw3.f03"/>
+        <FILE id="KmB11V" name="fftw3.h" compile="0" resource="0" file="Source/fftw/fftw3.h"/>
+        <FILE id="IDqbAD" name="fftw3l.f03" compile="0" resource="1" file="Source/fftw/fftw3l.f03"/>
+        <FILE id="yv9LoD" name="fftw3q.f03" compile="0" resource="1" file="Source/fftw/fftw3q.f03"/>
+        <FILE id="uUwfQG" name="fftwf-wisdom.exe" compile="0" resource="1"
+              file="Source/fftw/fftwf-wisdom.exe"/>
+        <FILE id="qxKBa8" name="fftwl-wisdom.exe" compile="0" resource="1"
+              file="Source/fftw/fftwl-wisdom.exe"/>
+        <FILE id="lAE2gg" name="libfftw3-3.def" compile="0" resource="1" file="Source/fftw/libfftw3-3.def"/>
+        <FILE id="V3lyRo" name="libfftw3-3.dll" compile="0" resource="1" file="Source/fftw/libfftw3-3.dll"/>
+        <FILE id="dj4HwB" name="libfftw3-3.exp" compile="0" resource="1" file="Source/fftw/libfftw3-3.exp"/>
+        <FILE id="awxTUp" name="libfftw3-3.lib" compile="0" resource="1" file="Source/fftw/libfftw3-3.lib"/>
+        <FILE id="lKc59J" name="libfftw3f-3.def" compile="0" resource="1" file="Source/fftw/libfftw3f-3.def"/>
+        <FILE id="Cc01xT" name="libfftw3f-3.dll" compile="0" resource="1" file="Source/fftw/libfftw3f-3.dll"/>
+        <FILE id="IWUfQ2" name="libfftw3f-3.exp" compile="0" resource="1" file="Source/fftw/libfftw3f-3.exp"/>
+        <FILE id="cZaA08" name="libfftw3f-3.lib" compile="0" resource="1" file="Source/fftw/libfftw3f-3.lib"/>
+        <FILE id="qWoLzQ" name="libfftw3l-3.def" compile="0" resource="1" file="Source/fftw/libfftw3l-3.def"/>
+        <FILE id="AQ8gGu" name="libfftw3l-3.dll" compile="0" resource="1" file="Source/fftw/libfftw3l-3.dll"/>
+        <FILE id="PxVxMx" name="libfftw3l-3.exp" compile="0" resource="1" file="Source/fftw/libfftw3l-3.exp"/>
+        <FILE id="WlmWwh" name="libfftw3l-3.lib" compile="0" resource="1" file="Source/fftw/libfftw3l-3.lib"/>
+        <FILE id="wwBPHK" name="NEWS" compile="0" resource="1" file="Source/fftw/NEWS"/>
+        <FILE id="eTjYMC" name="README" compile="0" resource="1" file="Source/fftw/README"/>
+        <FILE id="yhKr7o" name="README-bench" compile="0" resource="1" file="Source/fftw/README-bench"/>
+        <FILE id="mSAs5L" name="README-WINDOWS" compile="0" resource="1" file="Source/fftw/README-WINDOWS"/>
+      </GROUP>
       <GROUP id="{105ED9C3-F0E6-BC3F-6EDC-2A03F356EAAD}" name="libKeyFinder">
         <GROUP id="{4F605EDC-F8C6-6527-3776-EEB58C3328FE}" name="tests">
           <GROUP id="{A6FAD119-4A6D-35D0-E51B-452E00028FF1}" name="catch">
@@ -99,39 +136,6 @@
         <FILE id="I7geyJ" name="workspace.cpp" compile="1" resource="0" file="Source/libKeyFinder/workspace.cpp"/>
         <FILE id="cMSsGm" name="workspace.h" compile="0" resource="0" file="Source/libKeyFinder/workspace.h"/>
       </GROUP>
-      <GROUP id="{399B5430-4371-FE67-1788-D4A7FD362212}" name="fftw">
-        <FILE id="VIvUcr" name="bench.exe" compile="0" resource="1" file="Source/fftw/bench.exe"/>
-        <FILE id="IHAAX5" name="benchf.exe" compile="0" resource="1" file="Source/fftw/benchf.exe"/>
-        <FILE id="WN5LoR" name="benchl.exe" compile="0" resource="1" file="Source/fftw/benchl.exe"/>
-        <FILE id="zitbzU" name="COPYING" compile="0" resource="1" file="Source/fftw/COPYING"/>
-        <FILE id="Uy7FCx" name="COPYRIGHT" compile="0" resource="1" file="Source/fftw/COPYRIGHT"/>
-        <FILE id="pwDQy2" name="fftw-wisdom.exe" compile="0" resource="1" file="Source/fftw/fftw-wisdom.exe"/>
-        <FILE id="QDFlN4" name="fftw3.f" compile="0" resource="1" file="Source/fftw/fftw3.f"/>
-        <FILE id="N9OhjC" name="fftw3.f03" compile="0" resource="1" file="Source/fftw/fftw3.f03"/>
-        <FILE id="i6J5TX" name="fftw3.h" compile="0" resource="0" file="Source/fftw/fftw3.h"/>
-        <FILE id="aSZ5fF" name="fftw3l.f03" compile="0" resource="1" file="Source/fftw/fftw3l.f03"/>
-        <FILE id="Ta36Wa" name="fftw3q.f03" compile="0" resource="1" file="Source/fftw/fftw3q.f03"/>
-        <FILE id="OAlhS4" name="fftwf-wisdom.exe" compile="0" resource="1"
-              file="Source/fftw/fftwf-wisdom.exe"/>
-        <FILE id="uTPAWu" name="fftwl-wisdom.exe" compile="0" resource="1"
-              file="Source/fftw/fftwl-wisdom.exe"/>
-        <FILE id="HNcPEH" name="libfftw3-3.def" compile="0" resource="1" file="Source/fftw/libfftw3-3.def"/>
-        <FILE id="vvVLT0" name="libfftw3-3.dll" compile="0" resource="1" file="Source/fftw/libfftw3-3.dll"/>
-        <FILE id="ET5mbP" name="libfftw3-3.exp" compile="0" resource="1" file="Source/fftw/libfftw3-3.exp"/>
-        <FILE id="w9qSX9" name="libfftw3-3.lib" compile="0" resource="1" file="Source/fftw/libfftw3-3.lib"/>
-        <FILE id="kjVu13" name="libfftw3f-3.def" compile="0" resource="1" file="Source/fftw/libfftw3f-3.def"/>
-        <FILE id="qMz4Tx" name="libfftw3f-3.dll" compile="0" resource="1" file="Source/fftw/libfftw3f-3.dll"/>
-        <FILE id="qOHDWl" name="libfftw3f-3.exp" compile="0" resource="1" file="Source/fftw/libfftw3f-3.exp"/>
-        <FILE id="gsCfd5" name="libfftw3f-3.lib" compile="0" resource="1" file="Source/fftw/libfftw3f-3.lib"/>
-        <FILE id="UTPjXA" name="libfftw3l-3.def" compile="0" resource="1" file="Source/fftw/libfftw3l-3.def"/>
-        <FILE id="KQWJxa" name="libfftw3l-3.dll" compile="0" resource="1" file="Source/fftw/libfftw3l-3.dll"/>
-        <FILE id="WMJXfG" name="libfftw3l-3.exp" compile="0" resource="1" file="Source/fftw/libfftw3l-3.exp"/>
-        <FILE id="ZjucG8" name="libfftw3l-3.lib" compile="0" resource="1" file="Source/fftw/libfftw3l-3.lib"/>
-        <FILE id="sqDwCf" name="NEWS" compile="0" resource="1" file="Source/fftw/NEWS"/>
-        <FILE id="lBANPu" name="README" compile="0" resource="1" file="Source/fftw/README"/>
-        <FILE id="ZCHjuL" name="README-bench" compile="0" resource="1" file="Source/fftw/README-bench"/>
-        <FILE id="czavlN" name="README-WINDOWS" compile="0" resource="1" file="Source/fftw/README-WINDOWS"/>
-      </GROUP>
       <FILE id="AFts3g" name="TuneBoxrComponent.h" compile="0" resource="0"
             file="Source/TuneBoxrComponent.h"/>
       <FILE id="nnwA1F" name="PitchYIN.h" compile="0" resource="0" file="Source/PitchYIN.h"/>
@@ -147,12 +151,12 @@
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"
                JUCE_DSP_USE_STATIC_FFTW="0"/>
   <EXPORTFORMATS>
-    <VS2022 targetFolder="Builds/VisualStudio2022" externalLibraries="libfftw3-3.lib">
+    <VS2022 targetFolder="Builds/VisualStudio2022" extraLinkerFlags="libfftw3-3.lib">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="KeyDetector" headerPath="../../Source/libKeyFinder&#10;../../Source/fftw"
                        libraryPath="../../Source/fftw"/>
-        <CONFIGURATION isDebug="0" name="Release" targetName="KeyDetector" headerPath="../../Source/libKeyFinder&#10;../../Source/fftw"
-                       libraryPath="../../Source/fftw"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="KeyDetector" headerPath="../../Source/libKeyFinder&#10;../../Source/fftw&#10;&#10;"
+                       libraryPath="../../Source/fftw&#10;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>

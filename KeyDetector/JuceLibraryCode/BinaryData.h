@@ -8,15 +8,6 @@
 
 namespace BinaryData
 {
-    extern const char*   CMakeLists_txt;
-    const int            CMakeLists_txtSize = 562;
-
-    extern const char*   tests_pro;
-    const int            tests_proSize = 2146;
-
-    extern const char*   CMakeLists_txt2;
-    const int            CMakeLists_txt2Size = 1986;
-
     extern const char*   bench_exe;
     const int            bench_exeSize = 400306;
 
@@ -60,7 +51,7 @@ namespace BinaryData
     const int            libfftw33_dllSize = 2712765;
 
     extern const char*   libfftw33_exp;
-    const int            libfftw33_expSize = 144992;
+    const int            libfftw33_expSize = 145010;
 
     extern const char*   libfftw33_lib;
     const int            libfftw33_libSize = 241990;
@@ -72,7 +63,7 @@ namespace BinaryData
     const int            libfftw3f3_dllSize = 2772692;
 
     extern const char*   libfftw3f3_exp;
-    const int            libfftw3f3_expSize = 147746;
+    const int            libfftw3f3_expSize = 147768;
 
     extern const char*   libfftw3f3_lib;
     const int            libfftw3f3_libSize = 247600;
@@ -84,7 +75,7 @@ namespace BinaryData
     const int            libfftw3l3_dllSize = 1247967;
 
     extern const char*   libfftw3l3_exp;
-    const int            libfftw3l3_expSize = 88995;
+    const int            libfftw3l3_expSize = 89013;
 
     extern const char*   libfftw3l3_lib;
     const int            libfftw3l3_libSize = 149230;
@@ -100,6 +91,15 @@ namespace BinaryData
 
     extern const char*   READMEWINDOWS;
     const int            READMEWINDOWSSize = 1293;
+
+    extern const char*   CMakeLists_txt;
+    const int            CMakeLists_txtSize = 562;
+
+    extern const char*   tests_pro;
+    const int            tests_proSize = 2146;
+
+    extern const char*   CMakeLists_txt2;
+    const int            CMakeLists_txt2Size = 1986;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
     const int namedResourceListSize = 31;
