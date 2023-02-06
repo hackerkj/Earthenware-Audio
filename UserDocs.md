@@ -7,7 +7,7 @@ The JUCE framework is used to create and build this software. The Key Detector s
 Key Detector can either be ran from the already compiled vst3 plugin or built manually. The generated vst3 plugin must be placed in the search path for your audio workstaitons VST directory. Alternatively, a standalone executable can be generated in the build process.
 
 ### Building
-Navigate to `JUCE/extras/Projucer/Builds`. Select the build option for your respective platform (Linux, OSX, Windows) and run Projucer. Projucer is the tool used for simple generation of the project build resources. In Projucer go to `File->Open` and naviate to `Key Detector`. Load `KeyDetector.jucer`. On the top bar, select your respect platform and export it. When built, a build directory will be generated in the same folder with the options for a VST plugin and a standalone executable.
+Navigate to `JUCE/extras/Projucer/Builds`. Select the build option for your respective platform (Linux, OSX, Windows) and run Projucer. Projucer is the tool used for simple generation of the project build resources. In Projucer go to `File->Open` and naviate to `Key Detector`. Load `KeyDetector.jucer`. On the top bar, select your respect platform and export it. When built, a build directory will be generated in the same folder with the options for a VST plugin and a standalone executable. The program will not build the first time, copy the fftw library named `libfftw3-3.dll` from `KeyDetector/Source/libKeyFinder/` into the newly generated build directory and build again.
 
 ## Understanding the Plugin
 ![image](https://user-images.githubusercontent.com/43866259/216837084-e59629e3-a0cc-495d-a741-ceea87e65fec.png)
