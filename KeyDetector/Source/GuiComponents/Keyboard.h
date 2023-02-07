@@ -1,5 +1,5 @@
 #pragma once
-
+#include <JuceHeader.h>
 //==============================================================================
 class Keyboard  : public juce::Component,
                               private juce::MidiInputCallback,

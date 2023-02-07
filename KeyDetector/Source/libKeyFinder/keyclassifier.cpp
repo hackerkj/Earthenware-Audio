@@ -66,4 +66,20 @@ namespace KeyFinder {
     return bestMatch;
   }
 
+  std::priority_queue<key_cmp_t> KeyClassifier::sortedClassify(const std::vector<double>& chromaVector) {
+      std::priority_queue<key_cmp_t>  sortedKeys;
+      std::vector<double> scores(24);
+      double bestScore = 0.0;
+      for (unsigned int i = 0; i < SEMITONES; i++) {
+          double score;
+          score = major->cosineSimilarity(chromaVector, i); // major
+          sortedKeys.push({score, (key_t)(i*2)});
+          score = minor->cosineSimilarity(chromaVector, i); // minor
+          scores[(i * 2) + 1] = score;
+          sortedKeys.push({ score, (key_t)(i * 2) });
+      }
+
+      return sortedKeys;
+  }
+
 }

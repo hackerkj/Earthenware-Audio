@@ -32,6 +32,7 @@ namespace KeyFinder {
     KeyClassifier(const std::vector<double>& majorProfile, const std::vector<double>& minorProfile);
     ~KeyClassifier();
     key_t classify(const std::vector<double>& chromaVector);
+    std::priority_queue<key_cmp_t> sortedClassify(const std::vector<double>& chromaVector);
   private:
     ToneProfile* major;
     ToneProfile* minor;

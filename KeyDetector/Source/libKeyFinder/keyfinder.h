@@ -27,6 +27,7 @@
 #include "chromatransformfactory.h"
 #include "spectrumanalyser.h"
 #include "keyclassifier.h"
+#include <queue>
 
 namespace KeyFinder {
 
@@ -40,6 +41,8 @@ namespace KeyFinder {
 
     // for analysis of a whole audio file
     key_t keyOfAudio(const AudioData& audio);
+    std::priority_queue<key_cmp_t> sortedKeyOfAudio(const AudioData& audio);
+    
 
     // for experimentation with alternative tone profiles
     key_t keyOfChromaVector(const std::vector<double>& chromaVector, const std::vector<double>& overrideMajorProfile, const std::vector<double>& overrideMinorProfile) const;
@@ -48,6 +51,7 @@ namespace KeyFinder {
     void preprocess(AudioData& workingAudio, Workspace& workspace, bool flushRemainderBuffer = false);
     void chromagramOfBufferedAudio(Workspace& workspace);
     key_t keyOfChromaVector(const std::vector<double>& chromaVector) const;
+    std::priority_queue<key_cmp_t> sortedKeyOfChromaVector(const std::vector<double>& chromaVector) const;
     LowPassFilterFactory   lpfFactory;
     ChromaTransformFactory ctFactory;
     TemporalWindowFactory  twFactory;

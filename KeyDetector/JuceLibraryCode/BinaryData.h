@@ -8,6 +8,9 @@
 
 namespace BinaryData
 {
+    extern const char*   circleOfFifths_jpg;
+    const int            circleOfFifths_jpgSize = 54080;
+
     extern const char*   bench_exe;
     const int            bench_exeSize = 400306;
 
@@ -102,7 +105,7 @@ namespace BinaryData
     const int            CMakeLists_txt2Size = 1986;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 31;
+    const int namedResourceListSize = 32;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

@@ -27,6 +27,7 @@
 #include <deque>
 #include <mutex>
 #include "exception.h"
+#include <queue>
 
 #undef  PI
 #define PI 3.1415926535897932384626433832795
@@ -84,6 +85,8 @@ namespace KeyFinder {
     A_FLAT_MINOR,
     SILENCE = 24
   };
+
+#define key_cmp_t std::pair<double, key_t> 
 
   enum temporal_window_t {
     WINDOW_BLACKMAN,

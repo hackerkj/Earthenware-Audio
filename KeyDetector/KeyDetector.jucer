@@ -5,6 +5,17 @@
               pluginFormats="buildStandalone,buildVST3">
   <MAINGROUP id="Wou3SZ" name="KeyDetector">
     <GROUP id="{5B67DC47-8619-9622-EF98-472A14FCD68D}" name="Source">
+      <GROUP id="{B45A8B77-B127-9750-B3CD-039FF257B243}" name="GuiComponents">
+        <FILE id="CzLgiH" name="AudioListenerControls.h" compile="0" resource="0"
+              file="Source/GuiComponents/AudioListenerControls.h"/>
+        <FILE id="xW70Gj" name="circleOfFifths.jpg" compile="0" resource="1"
+              file="Source/GuiComponents/circleOfFifths.jpg"/>
+        <FILE id="nFGbql" name="ColorKey.h" compile="0" resource="0" file="Source/GuiComponents/ColorKey.h"/>
+        <FILE id="uA6P4I" name="Keyboard.cpp" compile="1" resource="0" file="Source/GuiComponents/Keyboard.cpp"/>
+        <FILE id="PTSgNW" name="Keyboard.h" compile="0" resource="0" file="Source/GuiComponents/Keyboard.h"/>
+        <FILE id="jPCnjH" name="ScaleEstimator.h" compile="0" resource="0"
+              file="Source/GuiComponents/ScaleEstimator.h"/>
+      </GROUP>
       <FILE id="x5yg9T" name="KeyDetectorManager.h" compile="0" resource="0"
             file="Source/KeyDetectorManager.h"/>
       <FILE id="FrOMuw" name="AudioBufferFIFO.h" compile="0" resource="0"

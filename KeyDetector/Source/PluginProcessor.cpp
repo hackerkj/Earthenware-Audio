@@ -99,14 +99,10 @@ void KeyDetectorAudioProcessor::prepareToPlay (double sampleRate, int samplesPer
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
-
-
     pitchYIN.setSampleRate(static_cast<unsigned int> (sampleRate));
     pitchYIN.setBufferSize(2048);
     yinData.clear();
     yinBuffer.clear();
-
-    DBG("playing");
 }
 
 void KeyDetectorAudioProcessor::releaseResources()
@@ -147,7 +143,6 @@ void KeyDetectorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
 
-
     // In case we have more outputs than inputs, this code clears any output
     // channels that didn't contain input data, (because these aren't
     // guaranteed to be empty - they may contain garbage).
@@ -164,7 +159,6 @@ void KeyDetectorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
 
-
     auto* channelData = buffer.getReadPointer(0);
 
     // only grabs the first channel, mono signal
@@ -174,7 +168,6 @@ void KeyDetectorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     // is displayed when that threshold isnt met.
     // Maybe just set a negative frequency and handle accordingly
     // The noise floor on my maachine seems to be around 10 ^-5
-    auto start = std::chrono::high_resolution_clock::now();
     yinBuffer.addToFifo(buffer, buffer.getNumSamples());
     if (yinBuffer.getNumReady() >= 2048) {
         pitch = pitchYIN.getPitchInHz(yinData.getReadPointer(0));
@@ -183,10 +176,6 @@ void KeyDetectorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     }
     
     keyDetectorManager.pushBlock(buffer, buffer.getNumSamples());
-    auto stop = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-    //if (duration.count() != 0) DBG(duration.count());
-    //DBG(buffer.getReadPointer(0)[0]);
 
      //..do something to the data...
 }
