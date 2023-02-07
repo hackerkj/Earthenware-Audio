@@ -11,6 +11,11 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "TuneBoxrComponent.h"
+#include "GuiComponents/AudioListenerControls.h"
+#include "GuiComponents/Keyboard.h"
+#include "GuiComponents/ScaleEstimator.h"
+#include "GuiComponents/ColorKey.h"
+
 
 
 //==============================================================================
@@ -33,6 +38,10 @@ private:
     // access the processor object that created it.
     KeyDetectorAudioProcessor& audioProcessor;
     TunerBoxComponent tunerBox;
-
+    AudioListenerControls audioListenerControls;
+    Keyboard keyboard;
+    ScaleEstimator scaleEstimator;
+    ColorKey colorKey;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KeyDetectorAudioProcessorEditor)
 };

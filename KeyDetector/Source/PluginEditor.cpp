@@ -35,8 +35,14 @@ KeyDetectorAudioProcessorEditor::KeyDetectorAudioProcessorEditor (KeyDetectorAud
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (600, 400);
+    setSize (800, 400);
+    
     addAndMakeVisible(tunerBox);
+    addAndMakeVisible(keyboard);
+    addAndMakeVisible(audioListenerControls);
+    addAndMakeVisible(scaleEstimator);
+    addAndMakeVisible(colorKey);
+
     startTimerHz(30);
 }
 
@@ -59,11 +65,14 @@ void KeyDetectorAudioProcessorEditor::resized()
     int margin = 10;
     int height = 400;
     int width = 600;
-    int centerDiv = width * 0.60;
+    int centerDiv = width * 0.65;
 
-    tunerBox.setBounds(centerDiv + margin, margin, width - centerDiv - 2 * margin, 140);
+    tunerBox.setBounds(width * 0.95, margin, width - centerDiv - 2 * margin, 140);
     tunerBox.resize();
-
+    scaleEstimator.setBounds(0, 0, 500, 500);
+    audioListenerControls.setBounds(width * 0.95,  height - (height * 0.55), 300, 300);
+    colorKey.setBounds(150, height - (height * 0.25), 450, 350);
+    keyboard.setBounds(centerDiv / 3.5, height - (height * 0.15), width, height * 0.15);
 }
 
 void KeyDetectorAudioProcessorEditor::timerCallback()
