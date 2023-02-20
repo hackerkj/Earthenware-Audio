@@ -1,5 +1,7 @@
 #pragma once
 #include <JuceHeader.h>
+#include "keyfinder.h"
+
 //==============================================================================
 class Keyboard  : public juce::Component,
                               private juce::MidiInputCallback,
@@ -16,7 +18,7 @@ public:
         keyboardState.addListener (this);
 
 
-        setSize (600, 350);
+        setSize (800, 350);
     }
 
     void paint (juce::Graphics& g) override
@@ -28,6 +30,73 @@ public:
         auto area = getLocalBounds();
 
         keyboardComponent.setBounds (area);
+    }
+
+    void setKey(key_t key)
+    {
+        if(currentKey == key)
+        {
+            return;
+        }
+
+        currentKey = key;
+
+        switch(currentKey)
+        {
+            case KeyFinder::key_t::A_FLAT_MAJOR:
+                break;
+            case KeyFinder::key_t::A_FLAT_MINOR:
+                break;
+            case KeyFinder::key_t::A_MAJOR:
+                break;
+            case KeyFinder::key_t::A_MINOR:
+                break;
+            case KeyFinder::key_t::B_FLAT_MAJOR:
+                break;
+            case KeyFinder::key_t::B_FLAT_MINOR:
+                break;
+            case KeyFinder::key_t::B_MAJOR:
+                break;
+            case KeyFinder::key_t::B_MINOR:
+                break;
+            case KeyFinder::key_t::C_MAJOR:
+                break;
+            case KeyFinder::key_t::C_MINOR:
+                break;
+            case KeyFinder::key_t::D_FLAT_MAJOR:
+                break;
+            case KeyFinder::key_t::D_FLAT_MINOR:
+                break;
+            case KeyFinder::key_t::D_MAJOR:
+                break;
+            case KeyFinder::key_t::D_MINOR:
+                break;
+            case KeyFinder::key_t::E_FLAT_MAJOR:
+                break;
+            case KeyFinder::key_t::E_FLAT_MINOR:
+                break;
+            case KeyFinder::key_t::E_MAJOR:
+                break;
+            case KeyFinder::key_t::E_MINOR:
+                break;
+             case KeyFinder::key_t::F_MAJOR:
+                break;
+            case KeyFinder::key_t::F_MINOR:
+                break;
+            case KeyFinder::key_t::G_FLAT_MAJOR:
+                break;
+            case KeyFinder::key_t::G_FLAT_MINOR:
+                break;
+            case KeyFinder::key_t::G_MAJOR:
+                break;
+            case KeyFinder::key_t::G_MINOR:
+                break;
+            case KeyFinder::key_t::SILENCE:
+                break;
+
+
+        }
+        repaint();
     }
 
 private:
@@ -45,6 +114,7 @@ private:
 
     juce::MidiKeyboardState keyboardState;            
     juce::MidiKeyboardComponent keyboardComponent;    
+    key_t currentKey;
 
     double startTime;
     //==============================================================================
