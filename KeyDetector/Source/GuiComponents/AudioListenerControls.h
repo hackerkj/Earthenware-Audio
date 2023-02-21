@@ -7,31 +7,6 @@ class AudioListenerControls   : public juce::Component,
 public:
     AudioListenerControls()
     {
-        quantityMenu.addItem ("1/2", 0);
-        quantityMenu.addItem ("1/4", 1);
-        quantityMenu.addItem ("1/8", 2);
-        quantityMenu.addItem ("1/16", 3);
-        quantityMenu.addItem ("1/32", 4);
-        quantityMenu.onChange = [this] { 
-            switch (quantityMenu.getSelectedId())
-            {
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                default:
-                    break;
-            }
-        };
-
-        addAndMakeVisible (quantityMenu);
-        quantityMenu.setSelectedId (1);
         
         audioPlayPauseBtn.onClick = [this] ()
         {
@@ -59,9 +34,8 @@ public:
     {
         float localX = getLocalBounds().getX();
         float localY = getLocalBounds().getY();
-        quantityMenu.setBounds(localX, localY, 85, 30);
-        audioPlayPauseBtn.setBounds(localX, localY + 45, 85, 30);
-        resetBtn.setBounds(localX + 90.0, localY+ 45, 85, 30);
+        audioPlayPauseBtn.setBounds(localX, localY + 25, 180, 40);
+        resetBtn.setBounds(localX, localY + 75, 180, 40);
     }
  
     void buttonClicked (juce::Button* button) override 

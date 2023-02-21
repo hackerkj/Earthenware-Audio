@@ -22,7 +22,6 @@ KeyDetectorAudioProcessor::KeyDetectorAudioProcessor()
     ), pitchYIN(44100, 2048)
     , yinBuffer(2, 4096)
     , yinData(2, 2048)
-    , keyDetectorManager(44100)
 
 #endif
 {
@@ -175,7 +174,7 @@ void KeyDetectorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
         yinBuffer.clear();
     }
     
-    keyDetectorManager.pushBlock(buffer, buffer.getNumSamples());
+    keyDetectorManager->pushBlock(buffer, buffer.getNumSamples());
 
      //..do something to the data...
 }

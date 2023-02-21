@@ -77,7 +77,6 @@ public:
         if (cents < -50.0) {
             cents = -50.0;
         }
-        // circular buffer logic
         centsRollingAverage[bufferIndex] = cents;
         bufferIndex = (bufferIndex + 1) % smoothingFactor;
         for (auto& n : centsRollingAverage) {

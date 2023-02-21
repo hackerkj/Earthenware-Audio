@@ -46,13 +46,14 @@ public:
     void paint (juce::Graphics& g) override 
     {        
         float localX = getLocalBounds().getX();
-        float localY = getLocalBounds().getY() + 5.0;
-        float localHeight = 260.0;
-        float localWidth = 320.0;
+        float localY = getLocalBounds().getY();
+        float localHeight = getLocalBounds().getHeight();
+        float localWidth = getLocalBounds().getWidth();
 
-        g.setColour(Colours::white);
+        g.setColour(Colours::black);
+        g.fillRect(localX, localY, localWidth, localHeight);
+        g.setFillType(Colours::darkblue);
         g.drawRect(localX, localY, localWidth, localHeight);
-        
     }
 
     void resized() override
@@ -93,7 +94,7 @@ public:
     //  fourthScale.setButtonText(); 
     }
 
-    key_t getKeyToDisplay()
+    KeyFinder::key_t getKeyToDisplay()
     {
         return currentKey;
     }
@@ -106,8 +107,7 @@ private:
 
     std::map<int, KeyFinder::key_t> rankings;
     KeyFinder::key_t currentKey;
-    
-    KeyDetectorManager* kdManager = new KeyDetectorManager(1000);
+    KeyDetectorManager* kdManager = KeyDetectorManager::getInstance(44100);
 
     void setScale(KeyFinder::key_t key)
     {

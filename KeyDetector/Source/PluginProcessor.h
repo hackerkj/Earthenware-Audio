@@ -68,7 +68,7 @@ private:
     AudioSampleBuffer yinData;
     float pitch;
     PitchYIN pitchYIN;
-    KeyDetectorManager keyDetectorManager;
+    KeyDetectorManager* keyDetectorManager = KeyDetectorManager::getInstance(44100);
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KeyDetectorAudioProcessor)

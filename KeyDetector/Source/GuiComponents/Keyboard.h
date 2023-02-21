@@ -32,7 +32,7 @@ public:
         keyboardComponent.setBounds (area);
     }
 
-    void setKey(key_t key)
+    void setKey(KeyFinder::key_t key)
     {
         if(currentKey == key)
         {
@@ -114,7 +114,7 @@ private:
 
     juce::MidiKeyboardState keyboardState;            
     juce::MidiKeyboardComponent keyboardComponent;    
-    key_t currentKey;
+    KeyFinder::key_t currentKey;
 
     double startTime;
     //==============================================================================

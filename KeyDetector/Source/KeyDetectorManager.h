@@ -25,20 +25,14 @@ using namespace juce;
 
 class KeyDetectorManager : public Timer // makes the gui hang for a bit, try with Thread instead?
 {
+
 public:
-    KeyDetectorManager(int sampleRate) : 
-        inputBuffer(1, sampleRate * BUFFER_SECONDS) ,
-        inputData(1, sampleRate * BUFFER_SECONDS)
-        
-    {
-        sampleMin = sampleRate;
-        sampleMax = sampleRate * BUFFER_SECONDS;
-        keyFinderInput.setChannels(1);
-        keyFinderInput.setFrameRate(sampleRate);
-        
-        inputBuffer.setSize(1, sampleRate * BUFFER_SECONDS);
-        inputBuffer.clear();
-        startTimer(UPDATE_INTERVAL);
+    inline static KeyDetectorManager* instancePtr = NULL;
+    // singletone design pattern for more direct access
+    static KeyDetectorManager* getInstance(int sampleRate) {
+        if (!instancePtr)
+            instancePtr = new KeyDetectorManager(sampleRate);
+        return instancePtr;
     }
 
     void timerCallback() override {
@@ -98,7 +92,25 @@ public:
         keyFinderInput.resetIterators();
     }
 
+
 private:
+    KeyDetectorManager(int sampleRate) :
+        inputBuffer(1, sampleRate* BUFFER_SECONDS),
+        inputData(1, sampleRate* BUFFER_SECONDS)
+
+    {
+        sampleMin = sampleRate;
+        sampleMax = sampleRate * BUFFER_SECONDS;
+        keyFinderInput.setChannels(1);
+        keyFinderInput.setFrameRate(sampleRate);
+
+        inputBuffer.setSize(1, sampleRate * BUFFER_SECONDS);
+        inputBuffer.clear();
+        startTimer(UPDATE_INTERVAL);
+
+    }
+
+
     AudioBufferFIFO<float> inputBuffer;
     AudioSampleBuffer inputData;
     
@@ -110,5 +122,6 @@ private:
     
     bool recording = true;
     bool clear = false;
+
 
 };
