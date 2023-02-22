@@ -17,7 +17,6 @@ public:
         addAndMakeVisible (keyboardComponent);
         keyboardState.addListener (this);
 
-
         setSize (800, 350);
     }
 

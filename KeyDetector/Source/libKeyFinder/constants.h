@@ -86,6 +86,34 @@ namespace KeyFinder {
     SILENCE = 24
   };
 
+  inline char* keyStrings[25] = {
+      "A MAJOR",
+      "A MINOR",
+      "B FLAT MAJOR",
+      "B FLAT MINOR",
+      "B MAJOR",
+      "B MINOR",
+      "C MAJOR",
+      "C MINOR",
+      "D FLAT MAJOR",
+      "D FLAT MINOR",
+      "D MAJOR",
+      "D MINOR",
+      "E FLAT MAJOR",
+      "E FLAT MINOR",
+      "E MAJOR",
+      "E MINOR",
+      "F MAJOR",
+      "F MINOR",
+      "G FLAT MAJOR",
+      "G FLAT MINOR",
+      "G MAJOR",
+      "G MINOR",
+      "A FLAT MAJOR",
+      "A FLAT MINOR",
+      "SILENCE"
+  };
+
 #define key_cmp_t std::pair<double, key_t> 
 
   enum temporal_window_t {

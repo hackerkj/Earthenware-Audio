@@ -87,4 +87,5 @@ void KeyDetectorAudioProcessorEditor::timerCallback()
     tunerBox.setNote(notes[note % 12]);
     tunerBox.setCents(cents);
     tunerBox.repaint();
+    scaleEstimator.repaint();
 }

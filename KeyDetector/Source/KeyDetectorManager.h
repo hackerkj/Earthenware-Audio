@@ -23,7 +23,7 @@ using namespace juce;
 #define key_qeueu_t std::priority_queue <std::pair<double, KeyFinder::key_t>>
 
 
-class KeyDetectorManager : public Timer // makes the gui hang for a bit, try with Thread instead?
+class KeyDetectorManager : public juce::Thread // makes the gui hang for a bit, try with Thread instead?
 {
 
 public:
@@ -35,10 +35,6 @@ public:
         return instancePtr;
     }
 
-    void timerCallback() override {
-        // overriden function controlled and inhereted from Timer
-        calculate();
-    }
 
     void calculate() {
         // pulls from a FIFO qeueu filled in our getNextBlock call
@@ -58,6 +54,9 @@ public:
             // grab the keys in order of similarity with a priority qeueu
             if (keyFinderInput.getSampleCount() > sampleMin) {
                 sortedKeys = keyFinder.sortedKeyOfAudio(keyFinderInput);
+                sortedUpdated = true;
+                clear = false;
+
             }
 
             // clear out the oldest data
@@ -71,8 +70,33 @@ public:
         }
     }
 
+    bool dataChanged() {
+        if (sortedUpdated) {
+            sortedUpdated = !sortedUpdated;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    bool dataClear() {
+        return clear;
+    }
+
+    void run() {
+        while (!threadShouldExit()) {
+            calculate();
+            wait(UPDATE_INTERVAL);
+        }
+
+    }
+
     void pushBlock(AudioSampleBuffer samples, int numSamples) {
-        inputBuffer.addToFifo(samples, numSamples);
+        if (recording) {
+            inputBuffer.addToFifo(samples, numSamples);
+        }
+
     }
 
     key_qeueu_t getKeys() {
@@ -90,13 +114,17 @@ public:
         inputBuffer.reset();
         inputData.clear();
         keyFinderInput.resetIterators();
+        keyFinderInput.discardFramesFromFront(keyFinderInput.getSampleCount());
+        while (!sortedKeys.empty()) { sortedKeys.pop(); }
+        clear = true;
     }
 
 
 private:
     KeyDetectorManager(int sampleRate) :
         inputBuffer(1, sampleRate* BUFFER_SECONDS),
-        inputData(1, sampleRate* BUFFER_SECONDS)
+        inputData(1, sampleRate* BUFFER_SECONDS),
+        Thread("keyManagerThread")
 
     {
         sampleMin = sampleRate;
@@ -106,10 +134,9 @@ private:
 
         inputBuffer.setSize(1, sampleRate * BUFFER_SECONDS);
         inputBuffer.clear();
-        startTimer(UPDATE_INTERVAL);
+        startThread();
 
     }
-
 
     AudioBufferFIFO<float> inputBuffer;
     AudioSampleBuffer inputData;
@@ -121,7 +148,8 @@ private:
     key_qeueu_t sortedKeys;
     
     bool recording = true;
-    bool clear = false;
+    bool clear = true;
+    bool sortedUpdated = false;
 
 
 };

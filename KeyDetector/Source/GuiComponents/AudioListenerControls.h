@@ -1,5 +1,6 @@
 #pragma once
 #include <JuceHeader.h>
+#include "KeyDetectorManager.h"
 
 class AudioListenerControls   : public juce::Component, 
                                 public juce::Button::Listener
@@ -53,17 +54,20 @@ private:
     {
         isPlaying = true;
         audioPlayPauseBtn.setButtonText(pauseString);
+        keyDetectorManager->toggleRecord();
     }
 
     void pause()
     {
         isPlaying = false;
         audioPlayPauseBtn.setButtonText(playString);
+        keyDetectorManager->toggleRecord();
     }
 
     void reset()
     {
         isReset = true;
+        keyDetectorManager->reset();
     }
 
     ComboBox quantityMenu;
@@ -76,6 +80,8 @@ private:
     
     bool isPlaying = false;
     bool isReset = false;
+
+    KeyDetectorManager* keyDetectorManager = KeyDetectorManager::getInstance(44100);
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioListenerControls)
 };

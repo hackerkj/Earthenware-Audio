@@ -11,7 +11,7 @@ public:
     {
         firstScale.onClick = [this] ()
         {
-            setScale(rankings[0]);
+            setScale(rankings[0].second);
         };
         firstScale.addListener(this);
         addAndMakeVisible(firstScale);
@@ -19,7 +19,7 @@ public:
 
         secondScale.onClick = [this] ()
         {
-            setScale(rankings[1]);
+            setScale(rankings[1].second);
 
         };
         secondScale.addListener(this);
@@ -28,7 +28,7 @@ public:
 
         thirdScale.onClick = [this] ()
         {   
-            setScale(rankings[2]);
+            setScale(rankings[2].second);
         };
         thirdScale.addListener(this);
         addAndMakeVisible(thirdScale);
@@ -36,7 +36,7 @@ public:
 
         fourthScale.onClick = [this] ()
         {
-            setScale(rankings[3]);
+            setScale(rankings[3].second);
         };
         fourthScale.addListener(this);
         addAndMakeVisible(fourthScale);
@@ -54,6 +54,24 @@ public:
         g.fillRect(localX, localY, localWidth, localHeight);
         g.setFillType(Colours::darkblue);
         g.drawRect(localX, localY, localWidth, localHeight);
+
+
+
+        if (kdManager->dataChanged() || kdManager->dataClear()) {
+            getKeyRankings();
+            if (kdManager->dataClear()) {
+                rankings[0].first = rankings[1].first = rankings[2].first = rankings[3].first = 0.0;
+            }
+
+            localY += 10.0;
+            firstScale.setBounds(localX, localY, localWidth * rankings[0].first, 50);
+            localY += 55.0;
+            secondScale.setBounds(localX, localY, localWidth * rankings[1].first, 50);
+            localY += 55.0;
+            thirdScale.setBounds(localX, localY, localWidth * rankings[2].first, 50);
+            localY += 55.0;
+            fourthScale.setBounds(localX, localY, localWidth * rankings[3].first, 50);
+        }
     }
 
     void resized() override
@@ -61,14 +79,7 @@ public:
         float localX = getLocalBounds().getX();
         float localY = getLocalBounds().getY();
 
-        localX += 5.0; localY += 5.0;
-        firstScale.setBounds(localX, localY + 10.0, 300, 50);
-        localY += 65.0;
-        secondScale.setBounds(localX, localY, 240, 50);
-        localY += 55.0;
-        thirdScale.setBounds(localX, localY, 170, 50);
-        localY += 55.0;
-        fourthScale.setBounds(localX, localY, 90, 50);
+
     }
 
     void buttonClicked (juce::Button* button) override 
@@ -77,21 +88,24 @@ public:
 
     void getKeyRankings()
     {
-       auto keys = kdManager->getKeys();
-        rankings[0] = keys.top().second;
-      //  firstScale.setButtonText();
+        auto keys = kdManager->getKeys();
+        if (!keys.empty()) {
+            rankings[0] = keys.top();
 
-        keys.pop();
-        rankings[1] = keys.top().second;
-     //  secondScale.setButtonText();
-
-        keys.pop();
-        rankings[2] = keys.top().second;
-    //  thirdScale.setButtonText();
-
-        keys.pop();
-        rankings[3] = keys.top().second;
-    //  fourthScale.setButtonText(); 
+            firstScale.setButtonText(KeyFinder::keyStrings[(int)rankings[0].second]);
+            keys.pop();
+            rankings[1] = keys.top();
+            secondScale.setButtonText(KeyFinder::keyStrings[(int)rankings[1].second]);
+            keys.pop();
+            rankings[2] = keys.top();
+            thirdScale.setButtonText(KeyFinder::keyStrings[(int)rankings[2].second]);
+            keys.pop();
+            rankings[3] = keys.top();
+            fourthScale.setButtonText(KeyFinder::keyStrings[(int)rankings[3].second]);
+        }
+        else {
+        }
+        
     }
 
     KeyFinder::key_t getKeyToDisplay()
@@ -105,7 +119,7 @@ private:
     juce::TextButton thirdScale;
     juce::TextButton fourthScale;
 
-    std::map<int, KeyFinder::key_t> rankings;
+    std::pair<double, KeyFinder::key_t> rankings[4];
     KeyFinder::key_t currentKey;
     KeyDetectorManager* kdManager = KeyDetectorManager::getInstance(44100);
 
