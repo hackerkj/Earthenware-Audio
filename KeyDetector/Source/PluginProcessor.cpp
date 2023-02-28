@@ -19,9 +19,7 @@ KeyDetectorAudioProcessor::KeyDetectorAudioProcessor()
 #endif
         .withOutput("Output", juce::AudioChannelSet::stereo(), true)
 #endif
-    ), pitchYIN(44100, 2048)
-    , yinBuffer(2, 4096)
-    , yinData(2, 2048)
+    )
 
 #endif
 {
@@ -98,10 +96,6 @@ void KeyDetectorAudioProcessor::prepareToPlay (double sampleRate, int samplesPer
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
-    pitchYIN.setSampleRate(static_cast<unsigned int> (sampleRate));
-    pitchYIN.setBufferSize(2048);
-    yinData.clear();
-    yinBuffer.clear();
 }
 
 void KeyDetectorAudioProcessor::releaseResources()
@@ -167,12 +161,6 @@ void KeyDetectorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     // is displayed when that threshold isnt met.
     // Maybe just set a negative frequency and handle accordingly
     // The noise floor on my maachine seems to be around 10 ^-5
-    yinBuffer.addToFifo(buffer, buffer.getNumSamples());
-    if (yinBuffer.getNumReady() >= 2048) {
-        pitch = pitchYIN.getPitchInHz(yinData.getReadPointer(0));
-        yinBuffer.readFromFifo(yinData, 2048);
-        yinBuffer.clear();
-    }
     
     keyDetectorManager->pushBlock(buffer, buffer.getNumSamples());
 
@@ -204,10 +192,6 @@ void KeyDetectorAudioProcessor::setStateInformation (const void* data, int sizeI
     // whose contents will have been created by the getStateInformation() call.
 }
 
-float KeyDetectorAudioProcessor::getPitch()
-{
-    return pitch;
-}
 
 //==============================================================================
 // This creates new instances of the plugin..

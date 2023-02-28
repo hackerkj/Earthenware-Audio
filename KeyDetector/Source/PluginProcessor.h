@@ -59,15 +59,9 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    // accessors added by me
-    float getPitch();
 
 private:
     //==============================================================================
-    AudioBufferFIFO<float> yinBuffer;
-    AudioSampleBuffer yinData;
-    float pitch;
-    PitchYIN pitchYIN;
     KeyDetectorManager* keyDetectorManager = KeyDetectorManager::getInstance(44100);
 
 

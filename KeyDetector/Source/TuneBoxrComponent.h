@@ -11,6 +11,7 @@
 
 #include <JuceHeader.h>
 
+
 class HorizontalTunerBarComponent : public Component
     // TODO: display the note nubmer next to the letter and pitch/cent deviation where we have room
     // maybe even make some little arrows to point to the direction of the pitch center
@@ -31,8 +32,7 @@ public:
         g.fillRect(localX, localY, 4.0, localHeight);
         g.fillRect(localX + localWidth-4, localY, 4.0, localHeight);
         g.fillRect(localX, localX + localHeight / 2, localWidth, 2.0);
-        
-
+        setCents(kdManager->getCeents());
         g.drawRect(localWidth / 2 - 5, localY, ((localX + localWidth) / 100.0) * 10.0, localY + localHeight, 2.0);
         if (abs(centsSmoothed) < 50.0) {
             float inner = 5.0;
@@ -95,6 +95,7 @@ private:
     float centsRollingAverage[smoothingFactor];
     float sum = 0.0;
     unsigned int bufferIndex = 0;
+    KeyDetectorManager* kdManager = KeyDetectorManager::getInstance(44100);
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(HorizontalTunerBarComponent)
 };
 
@@ -103,11 +104,11 @@ class TunerBoxComponent : public Component
 public:
     TunerBoxComponent() {
         addAndMakeVisible(horizontalTunerBar);
-
     }
 
     void paint(Graphics& g) override
     {
+        setNote(kdManager->getNote());
         g.setColour(juce::Colours::black);
         g.fillAll();
         g.setColour(juce::Colours::darkslateblue);
@@ -124,11 +125,6 @@ public:
         this->note = note;
     }
 
-    void setCents(float cents)
-    {
-        horizontalTunerBar.setCents(cents);
-    }
-
     void resize()
     {
         int localX = getLocalBounds().getX();
@@ -143,6 +139,7 @@ private:
     juce::String note;
     float cents;
     HorizontalTunerBarComponent horizontalTunerBar;
+    KeyDetectorManager* kdManager = KeyDetectorManager::getInstance(44100);
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TunerBoxComponent)
 };
 

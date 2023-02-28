@@ -10,24 +10,7 @@
 #include "PluginEditor.h"
 
 
-// utilities for frequency <-> note
-// were assuming a standard 440hz A4
-int noteFromPitch(float frequency) {
-    float noteNum = 12.0 * (log(frequency / 440.0) / log(2.0));
-    noteNum = round(noteNum) + 69;
-    return noteNum;
-}
 
-float frequencyFromNoteNumber(int note) {
-    return 440.0 * pow(2.0, (note - 69) / 12.0);
-}
-
-float centsOffFromPitch(float frequency, int note) {
-    // if this returns over or under +/- 50 something is wrong
-    float frqFromNote = frequencyFromNoteNumber(note);
-    float logOfPitch = log(frequency / frqFromNote);
-    return floor(1200.0 * logOfPitch) / log(2.0);
-}
 
 //==============================================================================
 KeyDetectorAudioProcessorEditor::KeyDetectorAudioProcessorEditor (KeyDetectorAudioProcessor& p)
@@ -77,15 +60,6 @@ void KeyDetectorAudioProcessorEditor::resized()
 
 void KeyDetectorAudioProcessorEditor::timerCallback()
 {
-    //TODO::add cents counter, figure out the jumpiness in the slider animation,
-    // maybe separate out the moving parts away from the static ones.
-    float freq = audioProcessor.getPitch();
-    unsigned int note = noteFromPitch(freq);
-    float cents = centsOffFromPitch(freq, note);
-    const std::array<const String, 12> notes = { "C","C#","D","Eb","E","F","F#","G","G#","A","Bb","B" };
-
-    tunerBox.setNote(notes[note % 12]);
-    tunerBox.setCents(cents);
     tunerBox.repaint();
     scaleEstimator.repaint();
 }

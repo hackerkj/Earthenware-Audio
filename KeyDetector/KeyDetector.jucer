@@ -11,7 +11,10 @@
         <FILE id="xW70Gj" name="circleOfFifths.jpg" compile="0" resource="1"
               file="Source/GuiComponents/circleOfFifths.jpg"/>
         <FILE id="nFGbql" name="ColorKey.h" compile="0" resource="0" file="Source/GuiComponents/ColorKey.h"/>
-        <FILE id="uA6P4I" name="Keyboard.cpp" compile="1" resource="0" file="Source/GuiComponents/Keyboard.cpp"/>
+        <FILE id="uvC1EG" name="ColorMidiKeyboardComponent.cpp" compile="1"
+              resource="0" file="Source/GuiComponents/ColorMidiKeyboardComponent.cpp"/>
+        <FILE id="QT0TT5" name="ColorMidiKeyboardComponent.h" compile="0" resource="0"
+              file="Source/GuiComponents/ColorMidiKeyboardComponent.h"/>
         <FILE id="PTSgNW" name="Keyboard.h" compile="0" resource="0" file="Source/GuiComponents/Keyboard.h"/>
         <FILE id="jPCnjH" name="ScaleEstimator.h" compile="0" resource="0"
               file="Source/GuiComponents/ScaleEstimator.h"/>

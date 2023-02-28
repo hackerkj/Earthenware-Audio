@@ -1,6 +1,7 @@
 #pragma once
 #include <JuceHeader.h>
 #include "keyfinder.h"
+#include "ColorMidiKeyboardComponent.h"
 
 //==============================================================================
 class Keyboard  : public juce::Component,
@@ -9,7 +10,7 @@ class Keyboard  : public juce::Component,
 {
 public:
     Keyboard()
-    : keyboardComponent (keyboardState, juce::MidiKeyboardComponent::horizontalKeyboard),
+    : keyboardComponent (keyboardState, ColorMidiKeyboardComponent::horizontalKeyboard),
         startTime (juce::Time::getMillisecondCounterHiRes() * 0.001)
     {
         setOpaque (true);
@@ -136,7 +137,7 @@ private:
     }
 
     juce::MidiKeyboardState keyboardState;            
-    juce::MidiKeyboardComponent keyboardComponent;    
+    juce::ColorMidiKeyboardComponent keyboardComponent;
     std::vector<int> midiNumberList;
     KeyFinder::key_t currentKey = KeyFinder::key_t::C_MAJOR;
 
