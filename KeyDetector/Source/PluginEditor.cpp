@@ -62,4 +62,5 @@ void KeyDetectorAudioProcessorEditor::timerCallback()
 {
     tunerBox.repaint();
     scaleEstimator.repaint();
+    keyboard.setKey();
 }

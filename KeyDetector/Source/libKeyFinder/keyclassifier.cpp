@@ -76,7 +76,7 @@ namespace KeyFinder {
           sortedKeys.push({score, (key_t)(i*2)});
           score = minor->cosineSimilarity(chromaVector, i); // minor
           scores[(i * 2) + 1] = score;
-          sortedKeys.push({ score, (key_t)(i * 2) });
+          sortedKeys.push({ score, (key_t)(i * 2 + 1) });
       }
 
       return sortedKeys;

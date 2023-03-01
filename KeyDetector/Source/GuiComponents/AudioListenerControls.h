@@ -74,9 +74,9 @@ private:
 
     juce::TextButton audioPlayPauseBtn;
     juce::TextButton resetBtn;
-    juce::String playString = "play";
-    juce::String pauseString = "pause";
-    juce::String resetString = "reset";
+    juce::String playString = "Playing";
+    juce::String pauseString = "Paused";
+    juce::String resetString = "Reset";
     
     bool isPlaying = false;
     bool isReset = false;

@@ -153,9 +153,6 @@ public:
 
         @see Component::setColour, Component::findColour, LookAndFeel::setColour, LookAndFeel::findColour
     */
-
-    virtual void setCurrentKey(std::vector<int> midiNumberList) { keyList = midiNumberList;}
-    
     enum ColourIds
     {
         whiteNoteColourId               = 0x1005000,
@@ -167,6 +164,15 @@ public:
         shadowColourId                  = 0x1005006
     };
 
+    // custom sets
+    virtual void setScaleNotes(std::vector<int> midiNumberList, int note) {
+        // rootNote 0 is C, rootNote 1 is C# ... rootNote 11 is B
+        keyList = midiNumberList;
+        rootNote = note;
+    }
+    virtual void setPlayedNote(int note) {
+        playedNote = note;
+    }
     //==============================================================================
     /** Use this method to draw a white note of the keyboard in a given rectangle.
 
@@ -275,6 +281,8 @@ private:
     BigInteger keysPressed, keysCurrentlyDrawnDown;
 
     std::vector<int> keyList;
+    int playedNote;
+    int rootNote;
     std::atomic<bool> noPendingUpdates { true };
 
     //==============================================================================

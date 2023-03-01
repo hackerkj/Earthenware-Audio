@@ -111,6 +111,96 @@ public:
         return sortedKeys;
     }
 
+    void setSelectedKey(KeyFinder::key_t inKey) {
+        selectedKey = inKey;
+    }
+    KeyFinder::key_t getSelectedKey() {
+        return selectedKey;
+    }
+
+    std::vector<int> getScaleNotes() {
+        std::vector<int> scaleNotes;
+        switch (selectedKey)
+        {
+        case KeyFinder::key_t::A_FLAT_MAJOR:
+            scaleNotes = { 6, 8, 0, 1, 3, 5, 7 };
+            break;
+        case KeyFinder::key_t::A_FLAT_MINOR:
+            scaleNotes = { 1, 3, 4, 6, 8, 10, 11 };
+            break;
+        case KeyFinder::key_t::A_MAJOR:
+            scaleNotes = { 1, 2, 4, 6, 8, 9, 11 };
+            break;
+        case KeyFinder::key_t::A_MINOR:
+            scaleNotes = { 0, 2, 4, 5, 7, 9, 11 };
+            break;
+        case KeyFinder::key_t::B_FLAT_MAJOR:
+            scaleNotes = { 0, 2, 3, 5, 7, 9, 10 };
+            break;
+        case KeyFinder::key_t::B_FLAT_MINOR:
+            scaleNotes = { 0, 1, 3, 5, 7, 8, 10 };
+            break;
+        case KeyFinder::key_t::B_MAJOR:
+            scaleNotes = { 1, 3, 4, 6, 8, 10, 11 };
+            break;
+        case KeyFinder::key_t::B_MINOR:
+            scaleNotes = { 1, 2, 4, 6, 8, 9, 11 };
+            break;
+        case KeyFinder::key_t::C_MAJOR:
+            scaleNotes = { 0, 2, 4, 5, 7, 9, 11 };
+            break;
+        case KeyFinder::key_t::C_MINOR:
+            scaleNotes = { 0, 2, 3, 5, 7, 9 };
+            break;
+        case KeyFinder::key_t::D_FLAT_MAJOR:
+            scaleNotes = { 0, 1, 3, 5, 6, 8 };
+            break;
+        case KeyFinder::key_t::D_FLAT_MINOR:
+            scaleNotes = { 1, 3, 4, 6, 8, 10, 11 };
+            break;
+        case KeyFinder::key_t::D_MAJOR:
+            scaleNotes = { 1, 2, 4, 6, 7, 9, 11 };
+            break;
+        case KeyFinder::key_t::D_MINOR:
+            scaleNotes = { 0, 2, 4, 5, 7, 9, 11 };
+            break;
+        case KeyFinder::key_t::E_FLAT_MAJOR:
+            scaleNotes = { 0, 2, 3, 5, 7, 8, 10 };
+            break;
+        case KeyFinder::key_t::E_FLAT_MINOR:
+            scaleNotes = { 1, 3, 5, 6, 8, 10, 11 };
+            break;
+        case KeyFinder::key_t::E_MAJOR:
+            scaleNotes = { 1, 3, 4, 6, 8, 9, 11 };
+            break;
+        case KeyFinder::key_t::E_MINOR:
+            scaleNotes = { 0, 2, 4, 6, 7, 9, 11 };
+            break;
+        case KeyFinder::key_t::F_MAJOR:
+            scaleNotes = { 0, 2, 4, 5, 7, 9, 10 };
+            break;
+        case KeyFinder::key_t::F_MINOR:
+            scaleNotes = { 0, 2, 3, 5, 7, 8, 10 };
+            break;
+        case KeyFinder::key_t::G_FLAT_MAJOR:
+            scaleNotes = { 1, 3, 5, 6, 8, 10, 11 };
+            break;
+        case KeyFinder::key_t::G_FLAT_MINOR:
+            scaleNotes = { 1, 3, 4, 6, 8, 9, 11 };
+            break;
+        case KeyFinder::key_t::G_MAJOR:
+            scaleNotes = { 0, 2, 4, 6, 7, 9, 11 };
+            break;
+        case KeyFinder::key_t::G_MINOR:
+            scaleNotes = { 0, 2, 4, 5, 7, 9, 10 };
+            break;
+        case KeyFinder::key_t::SILENCE:
+            scaleNotes = {};
+            break;
+        }
+        return scaleNotes;
+    }
+
     void toggleRecord() {
         recording = !recording;
     }
@@ -124,6 +214,7 @@ public:
         keyFinderInput.discardFramesFromFront(keyFinderInput.getSampleCount());
         while (!sortedKeys.empty()) { sortedKeys.pop(); }
         clear = true;
+        selectedKey = KeyFinder::key_t::SILENCE;
     }
 
     float getPitch() {
@@ -141,6 +232,10 @@ public:
         const std::array<String, 12> notes = { "C","C#","D","Eb","E","F","F#","G","G#","A","Bb","B" };
 
         return notes[note % 12] + String(octave);
+    }
+
+    int getMIDINote() {
+        return noteFromPitch(pitch);
     }
 
 
@@ -195,6 +290,10 @@ private:
     KeyFinder::AudioData keyFinderInput;
     KeyFinder::KeyFinder keyFinder;
     key_qeueu_t sortedKeys;
+
+    // keyboard scale
+    KeyFinder::key_t selectedKey;
+    std::vector<int> scaleNotes;
     
     // buttons
     bool recording = true;

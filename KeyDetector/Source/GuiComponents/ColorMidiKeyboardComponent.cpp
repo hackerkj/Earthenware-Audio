@@ -45,7 +45,7 @@ ColorMidiKeyboardComponent::ColorMidiKeyboardComponent (MidiKeyboardState& state
     colourChanged();
     setWantsKeyboardFocus (true);
 
-    startTimerHz (20);
+    startTimerHz (10);
 }
 
 ColorMidiKeyboardComponent::~ColorMidiKeyboardComponent()
@@ -351,7 +351,10 @@ void ColorMidiKeyboardComponent::drawWhiteNote (int midiNoteNumber, Graphics& g,
                                            bool isDown, bool isOver, Colour lineColour, Colour textColour)
 {
     auto c = Colours::transparentWhite;
-    keyList = {0, 2, 4, 5, 7, 9, 11};
+    auto inKey = Colour::fromRGBA(0, 255, 255, 128);
+    auto root = Colour::fromRGBA(0, 0, 255, 255);
+    auto playedOut = Colour::fromRGBA(255, 0, 0, 128);
+    auto playedIn = Colour::fromRGBA(0, 255, 0, 128);
 
     if(keyList.size() == 0)
     {
@@ -360,13 +363,24 @@ void ColorMidiKeyboardComponent::drawWhiteNote (int midiNoteNumber, Graphics& g,
     } 
     else 
     {
-
-        if(std::find(keyList.begin(), keyList.end(), midiNoteNumber % 12) != keyList.end()) 
-        {
-            c = juce::Colours::green;
-        }
-        else  c = juce::Colours::red;
+        bool noteInKey = std::find(keyList.begin(), keyList.end(), midiNoteNumber % 12) != keyList.end();
         
+        if(midiNoteNumber == playedNote) {
+            if (noteInKey) {
+                c = c.overlaidWith(playedIn);
+            }
+            else {
+                c = c.overlaidWith(playedOut);
+            }
+        }
+        else {
+            if (noteInKey) {
+                c = c.overlaidWith(inKey);
+            }
+            if (midiNoteNumber % 12 == rootNote) {
+                c = c.overlaidWith(root);
+            }
+        }
     }
     g.setColour (c);
     g.fillRect (area);
@@ -420,21 +434,36 @@ void ColorMidiKeyboardComponent::drawBlackNote (int midiNoteNumber, Graphics& g,
                                            bool isDown, bool isOver, Colour noteFillColour)
 {
     auto c = noteFillColour;
-    keyList = {0, 2, 4, 5, 7, 9, 11};
-    if(keyList.size() == 0)
-    {
-        if (isDown)  c = findColour (keyDownOverlayColourId);
-        if (isOver)  c = c.overlaidWith (findColour (mouseOverKeyOverlayColourId));
-    } 
-    else 
-    {
+    auto inKey = Colour::fromRGBA(0, 255, 255, 128);
+    auto root = Colour::fromRGBA(0, 0, 255, 255);
+    auto playedOut = Colour::fromRGBA(255, 0, 0, 128);
+    auto playedIn = Colour::fromRGBA(0, 255, 0, 128);
 
-        if(std::find(keyList.begin(), keyList.end(), midiNoteNumber % 12) != keyList.end()) 
-        {
-            c = juce::Colours::green;
+    if (keyList.size() == 0)
+    {
+        if (isDown)  c = findColour(keyDownOverlayColourId);
+        if (isOver)  c = c.overlaidWith(findColour(mouseOverKeyOverlayColourId));
+    }
+    else
+    {
+        bool noteInKey = std::find(keyList.begin(), keyList.end(), midiNoteNumber % 12) != keyList.end();
+
+        if (midiNoteNumber == playedNote) {
+            if (noteInKey) {
+                c = c.overlaidWith(playedIn);
+            }
+            else {
+                c = c.overlaidWith(playedOut);
+            }
         }
-        else  c = juce::Colours::red;
-        
+        else {
+            if (noteInKey) {
+                c = c.overlaidWith(inKey);
+            }
+            if (midiNoteNumber % 12 == rootNote) {
+                c = c.overlaidWith(root);
+            }
+        }
     }
 
     g.setColour (c);

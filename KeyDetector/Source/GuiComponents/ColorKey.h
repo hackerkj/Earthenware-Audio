@@ -16,16 +16,10 @@ public:
         float localHeight = 20.0;
         float localWidth = 20.0;
 
-        g.setColour(Colours::teal);
-        g.fillRect(localX, localY, localWidth, localHeight);
-        g.setColour(Colours::white);
-        g.drawText("Root", localX + 25.0, localY- 5.0,  30.0, 30.0, juce::Justification::centred, 40.f);
-        localX += 80.0;
-
         g.setColour(Colours::blue);
         g.fillRect(localX, localY, localWidth, localHeight);
         g.setColour(Colours::white);
-        g.drawText("Active", localX + 5.0, localY - 5.0,  80.0, 30.0, juce::Justification::centred, 40.f);
+        g.drawText("Root", localX + 25.0, localY- 5.0,  30.0, 30.0, juce::Justification::centred, 40.f);
         localX += 80.0;
      
         g.setColour(Colours::aqua);

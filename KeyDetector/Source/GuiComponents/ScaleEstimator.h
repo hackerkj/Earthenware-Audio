@@ -9,13 +9,14 @@ class ScaleEstimator : public juce::Component,
 public:
     ScaleEstimator()
     {
+
         firstScale.onClick = [this] ()
         {
             setScale(rankings[0].second);
         };
         firstScale.addListener(this);
         addAndMakeVisible(firstScale);
-        firstScale.setColour(TextButton::buttonColourId, juce::Colours::red);
+        firstScale.setColour(TextButton::buttonColourId, juce::Colours::green);
 
         secondScale.onClick = [this] ()
         {
@@ -24,7 +25,7 @@ public:
         };
         secondScale.addListener(this);
         addAndMakeVisible(secondScale);
-        secondScale.setColour(TextButton::buttonColourId, juce::Colours::lightseagreen);
+        secondScale.setColour(TextButton::buttonColourId, juce::Colours::green);
 
         thirdScale.onClick = [this] ()
         {   
@@ -32,7 +33,7 @@ public:
         };
         thirdScale.addListener(this);
         addAndMakeVisible(thirdScale);
-        thirdScale.setColour(TextButton::buttonColourId, juce::Colours::lightblue);
+        thirdScale.setColour(TextButton::buttonColourId, juce::Colours::green);
 
         fourthScale.onClick = [this] ()
         {
@@ -40,7 +41,7 @@ public:
         };
         fourthScale.addListener(this);
         addAndMakeVisible(fourthScale);
-        fourthScale.setColour(TextButton::buttonColourId, juce::Colours::lightpink);
+        fourthScale.setColour(TextButton::buttonColourId, juce::Colours::green);
     }
 
     void paint (juce::Graphics& g) override 
@@ -66,11 +67,11 @@ public:
             localY += 10.0;
             firstScale.setBounds(localX, localY, localWidth * rankings[0].first, 50);
             localY += 55.0;
-            secondScale.setBounds(localX, localY, localWidth * rankings[1].first, 50);
+            secondScale.setBounds(localX, localY, localWidth * rankings[1].first -10, 50);
             localY += 55.0;
-            thirdScale.setBounds(localX, localY, localWidth * rankings[2].first, 50);
+            thirdScale.setBounds(localX, localY, localWidth * rankings[2].first -20, 50);
             localY += 55.0;
-            fourthScale.setBounds(localX, localY, localWidth * rankings[3].first, 50);
+            fourthScale.setBounds(localX, localY, localWidth * rankings[3].first -30, 50);
         }
     }
 
@@ -91,7 +92,6 @@ public:
         auto keys = kdManager->getKeys();
         if (!keys.empty()) {
             rankings[0] = keys.top();
-
             firstScale.setButtonText(KeyFinder::keyStrings[(int)rankings[0].second]);
             keys.pop();
             rankings[1] = keys.top();
@@ -103,15 +103,8 @@ public:
             rankings[3] = keys.top();
             fourthScale.setButtonText(KeyFinder::keyStrings[(int)rankings[3].second]);
         }
-        else {
-        }
-        
     }
 
-    KeyFinder::key_t getKeyToDisplay()
-    {
-        return currentKey;
-    }
     
 private:
     juce::TextButton firstScale;
@@ -119,13 +112,14 @@ private:
     juce::TextButton thirdScale;
     juce::TextButton fourthScale;
 
+    bool firstToggle, secondToggle, thirdToggle, fouthToggle;
+
     std::pair<double, KeyFinder::key_t> rankings[4];
-    KeyFinder::key_t currentKey;
     KeyDetectorManager* kdManager = KeyDetectorManager::getInstance(44100);
 
     void setScale(KeyFinder::key_t key)
     {
-        currentKey = key;
+        kdManager->setSelectedKey(key);
     }
 
 
