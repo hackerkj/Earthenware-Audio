@@ -1,20 +1,20 @@
 # Table of Contets for Fall Design Reports
-## [1 Project Description](FinalDesignReport/Project_Description.md)
+## [1 Project Description](FinalDesignReport/Project_Description/)
 
-## [2 Design Diagrams](FinalDesignReport/Design_Diagrams/)
+## [2 User Interface Specification](FinalDesignReport/User_Interface_Specification/)
 
-## [3 Test Plan and Results](FinalDesignReport/EarthenwareAudioPresentation.pptx)
+## [3 Test Plan and Results](FinalDesignReport/Test_Plan_and_Results/)
 
-## [4 User Manual](FinalDesignReport/EarthenwareAudioPresentation.pptx)
+## [4 User Manual](FinalDesignReport/User_Manual)
 
-## [5 PPT Slideshow](FinalDesignReport/EarthenwareAudioPresentation.pptx)
+## [5 Spring Final PPT Presentation](FinalDesignReport/Spring_Final_PPT_Presentation/)
 
-## [6 Poster](FinalDesignReport/DesignPoster.pdf)
+## [6 Final Expo Poster](FinalDesignReport/Final_Expo_Poster/)
 
 ## [7 Assessments](FinalDesignReport/Assessments)
 
-## [8 Summary of Hours and Justification](FinalDesignReport/Assessments)
+## [8 Summary of Hours and Justification](FinalDesignReport/Assessments/)
 
-## [9 Summary of Expenses](FinalDesignReport/Assessments)
+## [9 Summary of Expenses](FinalDesignReport/Summary_of_Expenses/)
 
-## [10 Appendix](FinalDesignReport/Assessments)
+## [10 Appendix](FinalDesignReport/Appendix/)
