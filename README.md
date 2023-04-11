@@ -13,7 +13,7 @@
 
 ## [7 Assessments](FinalDesignReport/Assessments)
 
-## [8 Summary of Hours and Justification](FinalDesignReport/Assessments/)
+## [8 Summary of Hours and Justification](FinalDesignReport/Summary_of_Hours_and_Justification/)
 
 ## [9 Summary of Expenses](FinalDesignReport/Summary_of_Expenses/)
 
