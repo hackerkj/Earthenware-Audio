@@ -1,4 +1,4 @@
-# Table of Contets for Fall Design Reports
+# Table of Contents for Fall Design Reports
 ## [1 Project Description](FinalDesignReport/Project_Description/)
 
 ## [2 User Interface Specification](FinalDesignReport/User_Interface_Specification/)
